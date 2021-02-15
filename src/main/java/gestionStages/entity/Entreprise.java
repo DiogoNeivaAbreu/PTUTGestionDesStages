@@ -1,5 +1,7 @@
 package gestionStages.entity;
 
+import java.util.LinkedList;
+import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import lombok.*;
@@ -26,4 +28,27 @@ public class Entreprise {
     
     @NonNull
     private String secteur;
+    
+    @OneToMany(mappedBy = "entreprise")
+    List<MaitreStageEntreprise> tuteurs = new LinkedList<>();
+    
+    @OneToMany(mappedBy="proposeur")
+    @ToString.Exclude
+    private List<OffreStage> listeOffres = new LinkedList<>();
+    
+    public void AjouterOffre(OffreStage offre){
+        // TODO 
+    }
+    
+    public void AccepterOffre(OffreStage offre){
+        // TODO 
+    }
+    
+    public void RefuserOffre(OffreStage offre){
+        // TODO 
+    }
+    
+    public void DesignerMaitreStage(MaitreStageEntreprise tuteur, Stage stage){
+        // TODO 
+    }
 }

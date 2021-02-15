@@ -1,6 +1,6 @@
 package stages.dao;
 
-import gestionStages.entity.OffreStage;
+import gestionStages.entity.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 

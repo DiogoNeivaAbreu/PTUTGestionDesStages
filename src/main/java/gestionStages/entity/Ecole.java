@@ -1,5 +1,7 @@
 package gestionStages.entity;
 
+import java.util.LinkedList;
+import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import lombok.*;
@@ -29,4 +31,20 @@ public class Ecole {
     
     @NonNull
     private String description;
+    
+    @OneToMany(mappedBy="ecole")
+    @ToString.Exclude
+    private List<MaitreStageEcole> tuteursecole = new LinkedList<>();
+    
+    @OneToMany(mappedBy="univ")
+    @ToString.Exclude
+    private List<MaitreStageEcole> etudiants = new LinkedList<>();
+
+    public List<Entreprise> archiveEntreprises = new LinkedList<>();
+    
+    public List<Entreprise> ArchiveEntreprisePartenaire(){
+        
+        //TODO
+        return null;
+    }
 }

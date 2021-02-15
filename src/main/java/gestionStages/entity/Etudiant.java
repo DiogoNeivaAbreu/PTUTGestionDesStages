@@ -1,37 +1,30 @@
 package gestionStages.entity;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
+import java.util.List;
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import lombok.*;
 
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter @Setter @NoArgsConstructor @ToString
 @Entity // Une entité JPA
-public class Etudiant {
-    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Integer idEtudiant;
+public class Etudiant extends Personne{
 
-    @Column(unique=true)
-    @NonNull
-    private String nom;
-    
-    @NonNull
-    private String prenom;
-    
-    @NonNull
-    private LocalDate dateNaissance;
-   
-    @NonNull
-    private String adresse;
-    
-    @NonNull
-    private String telephone;
-    
-    @NonNull
-    @Email
-    private String email;
-    
     @NonNull
     private LocalDate anneeEtude;
     
+    @ManyToMany(mappedBy= "candidats")
+    @ToString.Exclude
+    private List<OffreStage> listeoffres = new LinkedList<>();
+    
+    @ManyToOne 
+    Ecole univ;
+    
+    public void PostulerOffre(OffreStage offre, Entreprise entreprise){
+        // TODO 
+    }
+    
+    public void AjouterDesDocuments(Administratif documents){
+        // TODO 
+    }
 }
