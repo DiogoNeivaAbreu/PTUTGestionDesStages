@@ -42,7 +42,7 @@ public class OffreStageController {
      * @return le nom de la vue à afficher ('formulaireOffreStage.html')
      */
     @GetMapping(path = "add")
-    public String montreLeFormulairePourAjout(@ModelAttribute("offreStage") OffreStage OffreStage) {
+    public String montreLeFormulairePourAjout(@ModelAttribute("offreStage") OffreStage offreStage) {
         return "formulaireOffreStage";
     }
 

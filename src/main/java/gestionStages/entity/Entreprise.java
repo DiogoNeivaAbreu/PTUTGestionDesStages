@@ -44,10 +44,6 @@ public class Entreprise {
         // TODO 
     }
     
-    public void RefuserOffre(OffreStage offre){
-        // TODO 
-    }
-    
     public void DesignerMaitreStage(MaitreStageEntreprise tuteur, Stage stage){
         // TODO 
     }
