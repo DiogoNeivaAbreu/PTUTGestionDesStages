@@ -38,6 +38,7 @@ public class Ecole {
     
     @OneToMany(mappedBy="univ")
     @ToString.Exclude
+    
     private List<MaitreStageEcole> etudiants = new LinkedList<>();
 
     public List<Entreprise> archiveEntreprises = new LinkedList<>();
@@ -47,4 +48,16 @@ public class Ecole {
         //TODO
         return null;
     }
+    
+    public void ValiderOffre(OffreStage offre){
+        // TODO 
+    }
+    
+    public void DesignerMaitreStage(MaitreStageEcole tuteurecole, Stage stage){
+        // TODO 
+    }
+    
+    public void VerifierStage(Stage stage){
+        // TODO 
+    }    
 }
