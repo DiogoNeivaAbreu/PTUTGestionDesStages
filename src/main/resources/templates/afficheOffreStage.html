@@ -20,7 +20,7 @@
 		<h3 th:text="${message}">Message de succès ou d'erreur</h3>				
 		<ul>
 			<!--/* Pour chaque catégorie o dans la liste 'offreStage' transmise par le contrôleur */-->
-			<li th:each="g: ${offreStage}">
+			<li th:each="o: ${offreStage}">
 				Titre: <em th:text="${o.titre}">Le titre de l'offre</em>,
                                 <a th:href="@{delete(id=${o.id})}">Supprimer l'offre n° [[${o.id}]]</a>
                                 <ul>

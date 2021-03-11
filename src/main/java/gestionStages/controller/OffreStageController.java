@@ -20,7 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping(path = "/offreStage")
 public class OffreStageController {
-        @Autowired
+    @Autowired
     private OffreStageRepository dao;
 
     /**
@@ -88,7 +88,7 @@ public class OffreStageController {
             dao.delete(offreStage); // Ici on peut avoir une erreur (Si il y a des expositions pour cette galerie par exemple)
         } catch (DataIntegrityViolationException e) {
             // violation de contrainte d'intégrité si on essaie de supprimer une offre de stage
-            message = "Erreur : Impossible de supprimer l'offre '" + offreStage.getTitre() + "', il faut d'abord supprimer ...";
+            message = "Erreur : Impossible de supprimer l'offre '" + offreStage.getTitre() + "'";
         }
         // RedirectAttributes permet de transmettre des informations lors d'une redirection,
         // Ici on transmet un message de succès ou d'erreur
