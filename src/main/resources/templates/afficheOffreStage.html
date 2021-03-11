@@ -24,7 +24,7 @@
 				Titre: <em th:text="${o.titre}">Le titre de l'offre</em>,
                                 <a th:href="@{delete(id=${o.id})}">Supprimer l'offre n° [[${o.id}]]</a>
                                 <ul>
-                			<li th:each="e: ${g.evenements}" th:text='${e.intitule}'>
+                			<li th:each="p: ${g.proposeur}" th:text='${p.nom}'>
                                             
                                         </li>
                                 </ul>

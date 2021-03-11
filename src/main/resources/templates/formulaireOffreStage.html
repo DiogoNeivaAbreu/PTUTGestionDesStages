@@ -16,6 +16,10 @@
 		<!--/* th:object définit quel est l'objet édité par ce formulaire */-->
 		<form th:object="${offreStage}" method="POST" th:action="@{save}">
 			<div class="column">
+                            <label for="description">Description:</label>
+                            <input type="text" th:field="*{description}" placeholder="Description de l'offre"/>				
+                        </div>
+                        <div class="column">
 				<label for="nom">Secteur:</label>
 				<!--/* th:field définit quel champ de l'objet est édité par cette zone de saisie */-->
 				<input type="text" th:field="*{Titre}" placeholder="Titre de l'offre"/>
@@ -38,3 +42,4 @@
 		<hr/>
 	</body>
 </html>
+*/-->
