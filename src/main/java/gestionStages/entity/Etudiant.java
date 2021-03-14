@@ -13,12 +13,12 @@ public class Etudiant extends Personne{
     @NonNull
     private LocalDate anneeEtude;
     
-    @ManyToMany(mappedBy= "candidats")
-    @ToString.Exclude
-    private List<OffreStage> listeoffres = new LinkedList<>();
-    
-    @ManyToOne 
-    Ecole univ;
+//    @ManyToMany(mappedBy= "candidats")
+//    @ToString.Exclude
+//    private List<OffreStage> listeoffres = new LinkedList<>();
+//    
+//    @ManyToOne 
+//    Ecole univ;
     
     public void PostulerOffre(OffreStage offre, Entreprise entreprise){
         // TODO 

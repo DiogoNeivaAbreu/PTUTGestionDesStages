@@ -10,6 +10,6 @@ public class MaitreStageEntreprise extends Personne{
     @NonNull
     private String poste;
     
-    @ManyToOne
-    Entreprise entreprise;
+//    @ManyToOne
+//    Entreprise entreprise;
 }

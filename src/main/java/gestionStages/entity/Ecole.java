@@ -32,16 +32,16 @@ public class Ecole {
     @NonNull
     private String description;
     
-    @OneToMany(mappedBy="ecole")
-    @ToString.Exclude
-    private List<MaitreStageEcole> tuteursecole = new LinkedList<>();
-    
-    @OneToMany(mappedBy="univ")
-    @ToString.Exclude
-    
-    private List<MaitreStageEcole> etudiants = new LinkedList<>();
-
-    public List<Entreprise> archiveEntreprises = new LinkedList<>();
+//    @OneToMany(mappedBy="ecole")
+//    @ToString.Exclude
+//    private List<MaitreStageEcole> tuteursecole = new LinkedList<>();
+//    
+//    @OneToMany(mappedBy="univ")
+//    @ToString.Exclude
+//    
+//    private List<MaitreStageEcole> etudiants = new LinkedList<>();
+//
+//    public List<Entreprise> archiveEntreprises = new LinkedList<>();
     
     public List<Entreprise> ArchiveEntreprisePartenaire(){
         

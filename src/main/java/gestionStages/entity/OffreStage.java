@@ -23,10 +23,10 @@ public class OffreStage extends Stage{
     @NonNull
     private String lettreMotivation;
     
-    @ManyToMany
-    @ToString.Exclude
-    List<Etudiant> candidats = new LinkedList<>();
-    
-    @ManyToOne
-    Entreprise proposeur;
+//    @ManyToMany
+//    @ToString.Exclude
+//    List<Etudiant> candidats = new LinkedList<>();
+//    
+//    @ManyToOne
+//    Entreprise proposeur;
 }

@@ -29,12 +29,12 @@ public class Entreprise {
     @NonNull
     private String secteur;
     
-    @OneToMany(mappedBy = "entreprise")
-    List<MaitreStageEntreprise> tuteurs = new LinkedList<>();
-    
-    @OneToMany(mappedBy="proposeur")
-    @ToString.Exclude
-    private List<OffreStage> listeOffres = new LinkedList<>();
+//    @OneToMany(mappedBy = "entreprise")
+//    List<MaitreStageEntreprise> tuteurs = new LinkedList<>();
+//    
+//    @OneToMany(mappedBy="proposeur")
+//    @ToString.Exclude
+//    private List<OffreStage> listeOffres = new LinkedList<>();
     
     public void AjouterOffre(OffreStage offre){
         // TODO 
