@@ -23,20 +23,21 @@
                     <thead>
                         <tr>
                             <th>Titre</th>
-                            <th>Entreprise</th>
+                            <!--/*<th>Entreprise</th>*/-->
                             <th>Description</th>
                             <th>Date de début</th>
                             <th>Date de fin</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="o: ${offreStage}">
                             <td th:text="${o.titre}">Titre de l'offre</td>
-                            <td th:each="p: ${o.proposeur}" th:text='${p.nom}'>Nom de l'entreprise</td>
+                            <!--/*<td th:text='${o.proposeur.nom}'>Nom de l'entreprise</td>*/-->
                             <td th:text="${o.description}">Description de l'offre</td>
                             <td th:text="${o.dateDebut}">Date de début</td>
                             <td th:text="${o.dateFin}">Date de fin</td>
-                            <td><a th:href="@{delete(id=${o.id})}">Supprimer l'offre n° [[${o.id}]]</a></td>
+                            <td><a th:href="@{delete(id=${o.idOffre})}">Supprimer l'offre n° [[${o.idOffre}]]</a></td>
                         </tr>
                     </tbody>
                 </table>

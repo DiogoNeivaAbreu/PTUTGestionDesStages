@@ -5,23 +5,23 @@ import java.util.List;
 import javax.persistence.*;
 import lombok.*;
 
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter @Setter @NoArgsConstructor @ToString
 @Entity
 public class OffreStage extends Stage{
     
-    @NonNull
+    //@NonNull
     private String niveauRequis;
     
-    @NonNull
+    //@NonNull
     private Boolean accepté;
     
-    @NonNull
+    //@NonNull
     private Boolean entretien;
     
-    @NonNull
+    //@NonNull
     private String CV;
     
-    @NonNull
+    //@NonNull
     private String lettreMotivation;
     
     @ManyToMany
