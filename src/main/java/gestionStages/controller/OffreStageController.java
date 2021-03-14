@@ -1,5 +1,6 @@
 package gestionStages.controller;
 
+import gestionStages.dao.EntrepriseRepository;
 import gestionStages.dao.OffreStageRepository;
 import gestionStages.entity.OffreStage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class OffreStageController {
     @Autowired
     private OffreStageRepository dao;
+    
+    @Autowired
+    private EntrepriseRepository dao2;
 
     /**
      * Affiche toutes les offres de stage dans la base
@@ -42,7 +46,8 @@ public class OffreStageController {
      * @return le nom de la vue à afficher ('formulaireOffreStage.html')
      */
     @GetMapping(path = "add")
-    public String montreLeFormulairePourAjout(@ModelAttribute("offreStage") OffreStage offreStage) {
+    public String montreLeFormulairePourAjout(@ModelAttribute("offreStage") OffreStage offreStage, Model model) {
+        model.addAttribute("entreprises", dao2.findAll());
         return "formulaireOffreStage";
     }
 
@@ -85,7 +90,7 @@ public class OffreStageController {
     public String supprimeUneOffrePuisMontreLaListe(@RequestParam("id") OffreStage offreStage, RedirectAttributes redirectInfo) {
         String message = "L'offre '" + offreStage.getTitre() + "' a bien été supprimée";
         try {
-            dao.delete(offreStage); // Ici on peut avoir une erreur (Si il y a des expositions pour cette galerie par exemple)
+            dao.delete(offreStage); // Ici on peut avoir une erreur 
         } catch (DataIntegrityViolationException e) {
             // violation de contrainte d'intégrité si on essaie de supprimer une offre de stage
             message = "Erreur : Impossible de supprimer l'offre '" + offreStage.getTitre() + "'";

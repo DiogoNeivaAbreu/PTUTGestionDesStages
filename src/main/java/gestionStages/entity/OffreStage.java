@@ -3,9 +3,10 @@ package gestionStages.entity;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.*;
-import lombok.NonNull;
-import lombok.ToString;
+import lombok.*;
 
+@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Entity
 public class OffreStage extends Stage{
     
     @NonNull
@@ -23,10 +24,10 @@ public class OffreStage extends Stage{
     @NonNull
     private String lettreMotivation;
     
-//    @ManyToMany
-//    @ToString.Exclude
-//    List<Etudiant> candidats = new LinkedList<>();
-//    
-//    @ManyToOne
-//    Entreprise proposeur;
+    @ManyToMany
+    @ToString.Exclude
+    List<Etudiant> candidats = new LinkedList<>();
+    
+    @ManyToOne
+    Entreprise proposeur;
 }

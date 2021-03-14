@@ -17,12 +17,9 @@ public class Stage {
     @NonNull
     private String description;
     
-    @NonNull
     private LocalDate dateDebut;
     
-    @NonNull
     private LocalDate dateFin;
     
-    @NonNull
     private String horaires;
 }
