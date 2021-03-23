@@ -87,7 +87,7 @@ public class OffreStageController {
      * @return une redirection vers l'affichage de la liste des offres
      */
     @GetMapping(path = "delete")
-    public String supprimeUneOffrePuisMontreLaListe(@RequestParam("idOffre") OffreStage offreStage, RedirectAttributes redirectInfo) {
+    public String supprimeUneOffrePuisMontreLaListe(@RequestParam("id") OffreStage offreStage, RedirectAttributes redirectInfo) {
         String message = "L'offre '" + offreStage.getTitre() + "' a bien été supprimée";
         try {
             dao.delete(offreStage); // Ici on peut avoir une erreur 

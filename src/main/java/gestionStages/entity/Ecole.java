@@ -10,7 +10,7 @@ import lombok.*;
 @Entity
 public class Ecole {
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Integer idEcole;
+    private Integer id;
 
     @Column(unique=true)
     @NonNull

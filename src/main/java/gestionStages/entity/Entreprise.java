@@ -10,7 +10,7 @@ import lombok.*;
 @Entity
 public class Entreprise {
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Integer idEntreprise;
+    private Integer id;
 
     @Column(unique=true)
     @NonNull

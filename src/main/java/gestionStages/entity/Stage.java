@@ -8,7 +8,7 @@ import lombok.*;
 @Entity
 public class Stage {
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Integer idOffre;
+    private Integer id;
 
     @Column(unique=true)
     @NonNull

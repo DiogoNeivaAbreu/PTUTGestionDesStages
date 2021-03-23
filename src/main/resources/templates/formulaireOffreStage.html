@@ -16,11 +16,11 @@
 		<!--/* th:object définit quel est l'objet édité par ce formulaire */-->
 		<form th:object="${offreStage}" method="POST" th:action="@{save}">
 			<div class="column">
-                            <!--/*<label for="entreprise">Entreprise:</label>
+                            <label for="entreprise">Entreprise:</label>
                             <select id="entreprise" name="entreprise">
-                                <option value="1" selected="selected">Nouvelle entreprise</option>
+                                <option value="0" selected="selected">Nouvelle entreprise</option>
                                 <option th:each="e: ${entreprises}" th:value="${e.id}" >[[${e.nom}]]</option>
-                            </select>*/-->
+                            </select>
                             
                             <label for="nom">Secteur:</label>
                             <!--/* th:field définit quel champ de l'objet est édité par cette zone de saisie */-->

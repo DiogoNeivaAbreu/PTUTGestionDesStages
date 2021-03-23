@@ -10,7 +10,7 @@ import lombok.*;
 public class Administratif {
     
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Integer idEcole;
+    private Integer id;
     
 //    public List<String> documentsStage = new LinkedList<>();
     

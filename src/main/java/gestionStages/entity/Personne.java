@@ -9,7 +9,7 @@ import lombok.*;
 @Entity // Une entité JPA
 public class Personne {
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Integer idPersonne;
+    private Integer id;
 
     @Column(unique=true)
     @NonNull
@@ -24,7 +24,6 @@ public class Personne {
     @NonNull
     private String telephone;
     
-    @NonNull
     @Email
     private String email;
 }
