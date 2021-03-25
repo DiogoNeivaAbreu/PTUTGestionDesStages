@@ -15,31 +15,18 @@
 	<body>
 		<h1>Mon Profil</h1>
 			
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Titre</th>
-                            <th>Entreprise</th>
-                            <th>Description</th>
-                            <th>Date de début</th>
-                            <th>Date de fin</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="o: ${offreStage}">
-                            <td th:text="${o.titre}">Titre de l'offre</td>
-                            <td>
-                                <span th:if="${o.proposeur == NULL}">Anonyme</span>
-                                <span th:unless="${o.proposeur == NULL}" th:text="${o.proposeur.nom}">Nom de l'entreprise</span>
-                            </td>
-                            <td th:text="${o.description}">Description de l'offre</td>
-                            <td th:text="${o.dateDebut}">Date de début</td>
-                            <td th:text="${o.dateFin}">Date de fin</td>
-                            <td><a th:href="@{delete(id=${o.id})}">Supprimer l'offre n° [[${o.id}]]</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div>
+                        <div th:each="p: ${personne}">
+                            <div>
+                                <span th:text="${p.nom}">Nom de la personne</span>
+                                <span th:text="${p.prenom}">Prénom de la personne</span>
+                            </div>
+                            <div th:text="${p.adresse}">Adresse de la personne</div>
+                            <div th:text="${p.telephone}">Numéro de téléphone de la personne</div>
+                            <div th:text="${p.email}">Email de la personne</div>
+                            
+                        </div>
+                </div>    
 		<hr/>
 		<a th:href="@{/}" href="../static/index.html">Retour au menu</a>
 		<hr/>

@@ -19,32 +19,21 @@
                 <a th:href="@{show}" href='monProfil.html'>Mon profil</a>
 		<!--/* On affiche un éventuel message d'erreur */-->
 		<h3 th:text="${message}">Message de succès ou d'erreur</h3>				
-		
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Titre</th>
-                            <th>Entreprise</th>
-                            <th>Description</th>
-                            <th>Date de début</th>
-                            <th>Date de fin</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="o: ${offreStage}">
-                            <td th:text="${o.titre}">Titre de l'offre</td>
-                            <td>
-                                <span th:if="${o.proposeur == NULL}">Anonyme</span>
-                                <span th:unless="${o.proposeur == NULL}" th:text="${o.proposeur.nom}">Nom de l'entreprise</span>
-                            </td>
-                            <td th:text="${o.description}">Description de l'offre</td>
-                            <td th:text="${o.dateDebut}">Date de début</td>
-                            <td th:text="${o.dateFin}">Date de fin</td>
-                            <td><a th:href="@{delete(id=${o.id})}">Supprimer l'offre n° [[${o.id}]]</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                
+                    <div th:each="o: ${offreStage}">
+                        <div th:text="${o.titre}">Titre de l'offre</div>
+                        <div>
+                            <span th:if="${o.proposeur == NULL}">Anonyme</span>
+                            <span th:unless="${o.proposeur == NULL}" th:text="${o.proposeur.nom}">Nom de l'entreprise</span>
+                        </div>
+                        <div th:text="${o.description}">Description de l'offre</div>
+                        <div>
+                            <span th:text="${o.dateDebut}">Date de début</span>
+                            <span th:text="${o.dateFin}">Date de fin</span>
+                        </div>
+                        <div><a th:href="@{delete(id=${o.id})}">Supprimer l'offre n° [[${o.id}]]</a></div>
+                    </div>
+                
 		<hr/>
 		<a th:href="@{/}" href="../static/index.html">Retour au menu</a>
 		<hr/>
