@@ -4,13 +4,16 @@ import gestionStages.dao.PersonneRepository;
 import gestionStages.entity.Personne;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+/**
+ * Edition des catégories, sans gestion des erreurs
+ */
+@Controller
+@RequestMapping(path = "/personne")
 public class PersonneController {
     @Autowired
     private PersonneRepository dao;

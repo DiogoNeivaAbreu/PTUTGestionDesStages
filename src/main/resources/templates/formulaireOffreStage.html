@@ -3,7 +3,7 @@
     Information transmise par le contrôleur :
     - offreStage : l'offre de stage à éditer
     */-->
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Ajouter une offre</title>
     <meta charset="UTF-8" />
@@ -33,11 +33,11 @@
                         <option th:each="e: ${entreprises}" th:value="${e.id}" >[[${e.nom}]]</option>
                     </select>
 
-                    <label for="libelle">Libellé de l'offre</label><hr>
+                    <label for="libelle">Libellé de l'offre</label>
                     <input id="libelle" type="text" autocomplete="off" placeholder="Libellé" th:field="*{titre}" required/>
                     <!--/* th:field définit quel champ de l'objet est édité par cette zone de saisie */-->
                     <label for="description">Description de l'offre</label>
-                    <textarea id="description" type="text" placeholder="Description" rows="10" cols="100" th:field="*{description}" required ></textarea>
+                    <textarea id="description" placeholder="Description" rows="10" cols="100" th:field="*{description}" required ></textarea>
                     <div class="dateStage row">
                         <div class="dateDebut">
                             <label for="dateDebut">Date de début</label>

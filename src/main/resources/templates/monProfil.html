@@ -1,35 +1,71 @@
 <!DOCTYPE HTML>
-<!--/* 
-	Le contrôleur transmet deux informations à cette vue :
-		- monProfil : la liste de mes infos
-		- message : un éventuel message d'erreur ou d'information
+<!--/*
+Le contrôleur transmet deux informations à cette vue :
+- monProfil : la liste de mes infos
+- message : un éventuel message d'erreur ou d'information
 */-->
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Mon Profil</title>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>	
-	</head>
-	<body>
-		<h1>Mon Profil</h1>
-                <a th:href="@{add}" href='formulaireMonProfil.html'>Ajouter une personne</a>
-                
-                <div>
-                        <div th:each="p: ${personne}">
-                            <div>
-                                <span th:text="${p.nom}">Nom de la personne</span>
-                                <span th:text="${p.prenom}">Prénom de la personne</span>
-                            </div>
-                            <div th:text="${p.adresse}">Adresse de la personne</div>
-                            <div th:text="${p.telephone}">Numéro de téléphone de la personne</div>
-                            <div th:text="${p.email}">Email de la personne</div>
-                            
-                        </div>
-                </div>    
-		<hr/>
-		<a th:href="@{/}" href="../static/index.html">Retour au menu</a>
-		<hr/>
-	</body>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mon Profil</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="row container">
+    <a th:href="@{/}" href="../static/index.html">Retour au menu</a>
+    <a href="monProfil.html">Mon profil</a>
+    <a href="#">Les offres</a>
+    <a href="#">Ça en est où ?</a>
+</nav>
+
+<img src="../images/user.svg" alt="user" class="iconeTitre">
+
+<section id="grosTitre">
+    <div class="container">
+        <div class="grosTitre row">
+            <h1>Mon profil <span>étudiant</span></h1>
+        </div>
+    </div>
+</section>
+<section id="monProfil">
+    <div class="container">
+        <div class="monProfil row">
+            <div class="photo">
+                <img src="https://publons.com/media/thumbs/academic/photos/be641bbc14b1472e93933b8588643273.png.200x200_q95_crop_detail_upscale.png" alt="">
+                <p>"J'ai toujours rêvé d'avoir 900 de frappe"</p>
+            </div>
+
+            <div class="informations">
+                <div th:each="p: ${personne}">
+                    <table>
+                        <tr>
+                            <td>Nom</td>
+                            <td th:text="${p.nom}">POUS</td>
+                        </tr>
+                        <tr>
+                            <td>Prénom</td>
+                            <td th:text="${p.prenom}">Gauthier</td>
+                        </tr>
+                        <tr>
+                            <td>Date de naissance</td>
+                            <td th:text="${p.adresse}">27/07/2001</td>
+                        </tr>
+                        <tr>
+                            <td>Année d'étude</td>
+                            <td th:text="${p.telephone}">3e année</td>
+                        </tr>
+                        <tr>
+                            <td>Adresse e-mail</td>
+                            <td th:text="${p.email}">gauthier.pous@etud.univ-jfc.fr</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
 </html>

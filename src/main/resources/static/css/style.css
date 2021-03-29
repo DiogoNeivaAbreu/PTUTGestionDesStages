@@ -4,7 +4,7 @@ body{
 	background-color: #E6E7ED;
 }
 
-div.container{
+.container{
 	width: 1200px;
 	margin-left: auto;
 	margin-right: auto;
@@ -21,6 +21,17 @@ div.row{
 	flex-wrap: wrap;
 	justify-content: space-between;
 	width: 100%;
+}
+
+img.iconeTitre{
+	position: absolute;
+	width: 200px;
+	right: 30px;
+}
+
+nav{
+	display: flex;
+	margin: 50px 0;
 }
 
 a.retour{
@@ -47,11 +58,24 @@ div.titre{
 	margin: 20px 0;
 }
 
+div.grosTitre h1{
+	margin-top: 100px;
+	font-size: 80pt;
+	font-weight: 900;
+	text-align: left;
+}
+
+div.grosTitre span{
+	font-size: 80pt;
+	font-weight: 900;
+	color: #DF303D;
+}
+
 h1{
 	margin: 0;
 	color: #000055;
 	font-family: "Nunito Sans", sans-serif;
-	font-size: 2em;
+	font-size: 2.5em;
 	text-align: center;
 }
 
@@ -114,4 +138,71 @@ input[type="submit"]{
 
 div.dateDebut, div.dateFin{
 	width: 45%;
+}
+
+
+/*------------------------------------------------
+ Mon profil
+------------------------------------------------*/
+div.monProfil{
+	margin-top: 100px;
+}
+nav a{
+	text-decoration: none;
+	font-family: "Nunito Sans", sans-serif;
+	color: #000055;
+	font-size: 24px;
+	font-weight: 600;
+	margin-right: 100px;
+}
+
+nav a:hover{
+	text-decoration: underline;
+}
+
+div.photo{
+	width: 50%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+div.photo img{
+	max-height: 200px;
+}
+
+div.photo p{
+	width: 100%;
+	text-align: center;
+	font-family: "Nunito Sans", sans-serif;
+	color: #888888;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+div.informations{
+	width: 50%;
+	background-color: #E6E7ED;
+	border-radius: 30px;
+	box-shadow: -3px -3px 6px rgba(255, 255, 255, 0.75),
+	3px 3px 6px rgba(0, 0, 0, 0.3);
+
+}
+
+table{
+	padding: 10px;
+}
+
+td{
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 20px;
+	color: #000055;
+	font-weight: bold;
+	width: 50%;
+	padding: 20px 0;
+}
+
+td:nth-child(2n-1){
+	color: #DF303D;
+	font-size: 24px;
 }
