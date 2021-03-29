@@ -191,15 +191,17 @@ div.informations{
 
 table{
 	padding: 10px;
-        table-layout: fixed;
+	table-layout: fixed;
 }
 
 td{
+	width: 50%;
+	padding: 20px 0;
 	font-family: "Nunito Sans", sans-serif;
 	font-size: 20px;
 	color: #000055;
 	font-weight: bold;
-	padding: 20px 0;
+
 }
 
 td:nth-child(2n-1){

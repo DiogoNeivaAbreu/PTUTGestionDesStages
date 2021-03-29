@@ -21,7 +21,7 @@ Le contrôleur transmet deux informations à cette vue :
     <a href="#">Ça en est où ?</a>
 </nav>
 
-<img src="../static/images/user.svg" alt="user" class="iconeTitre">
+<img src="https://isis.univ-jfc.fr/sites/isis.univ-jfc.fr/files/images-titre/QUE-SONTILS-DEVENUS-picto2.svg" alt="user" class="iconeTitre">
 
 <section id="grosTitre">
     <div class="container">
@@ -43,23 +43,23 @@ Le contrôleur transmet deux informations à cette vue :
                     <table>
                         <tr>
                             <td>Nom</td>
-                            <td th:text="${p.nom}">POUS</td>
+                            <td th:text="${p.nom}">Nom</td>
                         </tr>
                         <tr>
                             <td>Prénom</td>
-                            <td th:text="${p.prenom}">Gauthier</td>
+                            <td th:text="${p.prenom}">Prenom</td>
                         </tr>
                         <tr>
-                            <td>Date de naissance</td>
-                            <td th:text="${p.adresse}">27/07/2001</td>
+                            <td>Adresse</td>
+                            <td th:text="${p.adresse}">Adresse</td>
                         </tr>
                         <tr>
                             <td>Année d'étude</td>
-                            <td th:text="${p.telephone}">3e année</td>
+                            <td th:text="${p.telephone}">Année d'étude</td>
                         </tr>
                         <tr>
                             <td>Adresse e-mail</td>
-                            <td th:text="${p.email}">gauthier.pous@etud.univ-jfc.fr</td>
+                            <td th:text="${p.email}">Mail</td>
                         </tr>
                     </table>
                 </div>
