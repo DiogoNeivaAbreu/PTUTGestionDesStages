@@ -1,45 +1,59 @@
 <!DOCTYPE HTML>
-<!--/* 
-	Information transmise par le contrôleur :
-	- offreStage : l'offre de stage à éditer
-*/-->
+<!--/*
+    Information transmise par le contrôleur :
+    - offreStage : l'offre de stage à éditer
+    */-->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Ajouter une offre</title>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>	
-	</head>
-	<body>
-		<h1>Ajouter une offre</h1>
-		<!--/* Au revient au contrôleur, avec la méthode POST */-->
-		<!--/* th:object définit quel est l'objet édité par ce formulaire */-->
-		<form th:object="${offreStage}" method="POST" th:action="@{save}">
-			<div class="column">
-                            <label for="entreprise">Entreprise:</label>
-                            <select id="entreprise" name="entreprise">
-                                <option value="0" selected="selected">Nouvelle entreprise</option>
-                                <option th:each="e: ${entreprises}" th:value="${e.id}" >[[${e.nom}]]</option>
-                            </select>
-                            
-                            <label for="nom">Secteur:</label>
-                            <!--/* th:field définit quel champ de l'objet est édité par cette zone de saisie */-->
-                            <input type="text" th:field="*{titre}" placeholder="Titre de l'offre"/>
-			
-                            <label for="description">Description:</label>
-                            <input type="text" th:field="*{description}" placeholder="Description de l'offre"/>	
-                        
-                            <label for="dateDebut">Date de début:</label>
-                            <input type="text" th:field="*{dateDebut}" placeholder="Date de début"/>
-                            <label for="dateFin">Date de fin:</label>
-                            <input type="text" th:field="*{dateFin}" placeholder="Date de fin"/>
-                            <hr/>
-                            <input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
+<head>
+    <title>Ajouter une offre</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/> -->
+</head>
+<body>
+<section id="titre">
+    <div class="container">
+        <div class="titre">
+            <a class="retour" th:href="@{/}" href="../static/index.html">Retour au menu</a>
+            <h1>Ajouter une offre</h1>
+        </div>
+    </div>
+</section>
+<!--/* Au revient au contrôleur, avec la méthode POST */-->
+<!--/* th:object définit quel est l'objet édité par ce formulaire */-->
+<section id="ajouterUneOffre">
+    <div class="containerForm">
+        <div class="ajouterUneOffre">
+            <form th:object="${offreStage}" method="POST" th:action="@{save}">
+                <div class="row">
+                    <label for="entreprise">Entreprise:</label>
+                    <select id="entreprise" name="entreprise">
+                        <option disabled selected value>Nouvelle entreprise</option>
+                        <option th:each="e: ${entreprises}" th:value="${e.id}" >[[${e.nom}]]</option>
+                    </select>
+
+                    <label for="libelle">Libellé de l'offre</label><hr>
+                    <input id="libelle" type="text" autocomplete="off" placeholder="Libellé" th:field="*{titre}" required/>
+                    <!--/* th:field définit quel champ de l'objet est édité par cette zone de saisie */-->
+                    <label for="description">Description de l'offre</label>
+                    <textarea id="description" type="text" placeholder="Description" rows="10" cols="100" th:field="*{description}" required ></textarea>
+                    <div class="dateStage row">
+                        <div class="dateDebut">
+                            <label for="dateDebut">Date de début</label>
+                            <input id="dateDebut" type="date" placeholder="jj/mm/aaaa" th:field="*{dateDebut}" required>
                         </div>
-                        
-		</form>		
-		<hr/>
-		<a th:href="@{/}" href="../static/index.html">Retour au menu</a>
-		<hr/>
-	</body>
+                        <div class="dateFin">
+                            <label for="dateFin">Date de fin</label>
+                            <input id="dateFin" type="date" placeholder="jj/mm/aaaa" th:field="*{dateFin}" required>
+                        </div>
+                    </div>
+                    <input type="submit" value="Enregistrer" />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
 </html>

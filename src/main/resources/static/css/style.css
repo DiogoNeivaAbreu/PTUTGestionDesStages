@@ -1,127 +1,117 @@
 body{
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;	
+	padding: 0;
+	margin: 0;
+	background-color: #E6E7ED;
 }
 
-td, th {
-	border: 1px solid #ddd;
-	padding: 8px;
+div.container{
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-tr:nth-child(even){background-color: #f2f2f2;}
-
-tr:hover {background-color: #ddd;}
-
-th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	text-align: left;
-	background-color: #4CAF50;
-	color: white;
+div.containerForm{
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.column{
-	width:50%;
-	float:left;
-	padding: 5px;
-	box-sizing:border-box;
+div.row{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 100%;
 }
 
-/*clear-fix the parent of column because it collapsed!  */
-form:after{
-	content:'';
-	display:block;
-	clear:both;
+a.retour{
+	padding: 5px 15px;
+	border-radius: 10px;
+
+	color: #000055;
+	background-color: #E6E7ED;
+	text-decoration: none;
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 1.2em;
+	font-weight: 700;
+
+	box-shadow: -3px -3px 6px rgba(255, 255, 255, 0.75),
+	3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* FORM STUFF BEGINS HERE */
-form{
-	font-size:110%
+a.retour:hover{
+	box-shadow: inset -3px -3px 6px rgba(255, 255, 255, 0.75),
+	inset 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+div.titre{
+	margin: 20px 0;
+}
+
+h1{
+	margin: 0;
+	color: #000055;
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 2em;
+	text-align: center;
 }
 
 label{
-	display:block;
-	color:saddlebrown;
-	margin: 5px 0 3px;
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 700;
+	color: #000055;
+	font-size: 24px;
 }
 
-fieldset label{
-	display:inline-block;
-	font-size:85%;
-	font-family: Calibri, sans-serif;
-}
-
-
-input[type=text],
-input[type=email],
-input[type=tel],
-textarea,
 select{
-	width:100%;
-	padding:10px;
-	box-sizing:border-box;
-	background-color: #f2f2f2;	
-	border: solid 1px tan;
+	width: 100%;
+	font-size: 18px;
+	padding: 10px 0;
+	margin: 20px 0;
+	text-align: center;
+	border-radius: 10px;
+	font-family: "Nunito Sans", sans-serif;
+	color: #000055;
+	background-color: #E6E7ED;
+}
+
+input{
+	width: 100%;
+	font-size: 18px;
+	padding: 10px 0;
+	margin: 20px 0;
+	text-align: center;
+	border-radius: 30px;
+	font-family: "Nunito Sans", sans-serif;
+	color: #000055;
+	border: 0;
+	background-color: #E6E7ED;
+	box-shadow: inset -3px -3px 6px rgba(255, 255, 255, 0.75),
+	inset 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 textarea{
-	resize: vertical;
-	min-height: 70px;
+	resize: none;
+	width: 100%;
+	font-size: 18px;
+	padding: 10px 20px;
+	margin: 20px 0;
+	border-radius: 30px;
+	font-family: "Nunito Sans", sans-serif;
+	color: #000055;
+	border: 0;
+	background-color: #E6E7ED;
+	box-shadow: inset -3px -3px 6px rgba(255, 255, 255, 0.75),
+	inset 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
-fieldset{
-	border:none;
-	margin:20px 0 ;
-	padding:10px 0;
-	border-bottom: 1px solid tan;
+input[type="submit"]{
+	background-color: #000055;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	font-size: 20px;
 }
 
-legend{
-	color:white;
-	background-color:tan;
-	display:block;
-	width:100%;
-	padding:3px;
-}
-
-input[type=checkbox]{
-	background-color:red;
-	border: solid 1px red;
-	color:red;
-	outline:red;
-}
-
-/* BUTTONS */
-input[type=submit]{
-	padding-top:12px;
-	padding-bottom:12px;
-	padding-left:12px; 
-	padding-right:12px;
-	border-radius:10px;
-	text-align:left;
-	background-color: #4CAF50;
-	color: white;
-	border:none;
-}
-/* Reset Button: minimize the appearance */
-input[type=reset]{
-	background-color:transparent;
-	border:none;
-	text-decoration:underline;
-	cursor:pointer;
-	margin:20px 0;
-	color:olive;
-}
-
-/* hovers and tabs */
-input[type=text]:hover,
-input[type=email]:hover{
-	background-color:khaki;
-}
-input[type=text]:focus,
-input[type=email]:focus{
-	outline: 2px solid tan;
-}
-input[type=sumbit]:hover,
-input[type=submit]:focus{
-	background-color:limegreen;
+div.dateDebut, div.dateFin{
+	width: 45%;
 }
