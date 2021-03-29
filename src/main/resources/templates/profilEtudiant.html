@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <!--/*
 Le contrôleur transmet deux informations à cette vue :
-- monProfil : la liste de mes infos
+- profilEtudiant : la liste de mes infos
 - message : un éventuel message d'erreur ou d'information
 */-->
 
@@ -16,12 +16,12 @@ Le contrôleur transmet deux informations à cette vue :
 <body>
 <nav class="row container">
     <a th:href="@{/}" href="../static/index.html">Retour au menu</a>
-    <a href="monProfil.html">Mon profil</a>
+    <a href="/personne/show">Mon profil</a>
     <a href="#">Les offres</a>
     <a href="#">Ça en est où ?</a>
 </nav>
 
-<img src="../images/user.svg" alt="user" class="iconeTitre">
+<img src="../static/images/user.svg" alt="user" class="iconeTitre">
 
 <section id="grosTitre">
     <div class="container">

@@ -27,7 +27,7 @@ public class PersonneController {
     @GetMapping(path = "show")
     public String afficheToutesLesPersonnes(Model model) {
         model.addAttribute("personne", dao.findAll());
-        return "monProfil";
+        return "profilEtudiant";
     }
 
     /**
@@ -38,7 +38,7 @@ public class PersonneController {
      */
     @GetMapping(path = "add")
     public String montreLeFormulairePourAjout(@ModelAttribute("personne") Personne personne) {
-        return "formulaireMonProfil";
+        return "formulaireEtudiant";
     }
 
     /**
