@@ -23,7 +23,6 @@ public class Personne {
     @NonNull
     private String telephone;
     
-    @NonNull
     @Email
     private String email;
 }

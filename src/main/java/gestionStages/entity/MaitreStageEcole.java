@@ -3,11 +3,11 @@ package gestionStages.entity;
 import javax.persistence.*;
 import lombok.*;
 
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter @Setter @NoArgsConstructor @ToString
 @Entity
 public class MaitreStageEcole extends Personne{
 
-    @NonNull
+    //@NonNull
     private String matiereEnseignee;
     
     @ManyToOne

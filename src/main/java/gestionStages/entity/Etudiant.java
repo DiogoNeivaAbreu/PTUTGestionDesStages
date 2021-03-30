@@ -6,12 +6,12 @@ import java.util.List;
 import javax.persistence.*;
 import lombok.*;
 
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter @Setter @NoArgsConstructor @ToString
 @Entity // Une entité JPA
 public class Etudiant extends Personne{
 
-    @NonNull
-    private LocalDate anneeEtude;
+    //@NonNull
+    private String anneeEtude;
     
     @ManyToMany(mappedBy= "candidats")
     @ToString.Exclude

@@ -10,5 +10,5 @@ INSERT INTO Entreprise(id, nom, adresse, telephone, email, secteur) VALUES
     (2, 'Pierre Fabre', 'Castres','0660066006', null, 'Informatique');
 
 INSERT INTO Personne(DTYPE, id, nom, prenom, adresse, telephone, email, poste, matiere_enseignee, annee_etude) VALUES
-    ('Etudiant', 1, 'Dubois', 'Pierre', 'France', '0671827384', null, null, null, TO_DATE('2021', 'YYYY')),
-    ('MaitreStageEcole', 2, 'Petit', 'Jean', 'France', '0694857844', null, null, 'Informatique', null));
+    ('Etudiant', 1, 'Dubois', 'Pierre', 'France', '0671827384', null, null, null, '2021'),
+    ('MaitreStageEcole', 2, 'Petit', 'Jean', 'France', '0694857844', null, null, 'Informatique', null);
