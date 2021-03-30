@@ -2,8 +2,8 @@
 -- cf. application.properties
 
 INSERT INTO Stage(DTYPE, id, titre, description, date_debut, date_fin) VALUES 
-    ('OffreStage', 1, 'Informatique', 'Stage de 3A', TO_DATE('2021-05-01', 'YYYY-MM-DD'), TO_DATE('2021-31-07', 'YYYY-MM-DD')),
-    ('OffreStage', 2, 'Informatique', 'Stage de 3A', TO_DATE('2021-05-01', 'YYYY-MM-DD'), TO_DATE('2021-31-07', 'YYYY-MM-DD'));
+    ('OffreStage', 1, 'Informatique', 'Stage de 3A', TO_DATE('2021-05-01', 'YYYY-MM-DD'), TO_DATE('2021-07-07', 'YYYY-MM-DD')),
+    ('OffreStage', 2, 'Informatique', 'Stage de 3A', TO_DATE('2021-05-01', 'YYYY-MM-DD'), TO_DATE('2021-07-07', 'YYYY-MM-DD'));
 
 INSERT INTO Entreprise(id, nom, adresse, telephone, email, secteur) VALUES
     (1, 'PHP', 'Paris', '0660066006', null, 'Informatique'),

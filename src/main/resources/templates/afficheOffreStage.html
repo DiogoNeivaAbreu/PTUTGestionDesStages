@@ -1,40 +1,61 @@
 <!DOCTYPE HTML>
-<!--/* 
-	Le contrôleur transmet deux informations à cette vue :
-		- offreStage : la liste des offres à afficher
-		- message : un éventuel message d'erreur ou d'information
+<!--/*
+Le contrôleur transmet deux informations à cette vue :
+- offreStage : la liste des offres à afficher
+- message : un éventuel message d'erreur ou d'information
 */-->
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Liste des offres de stage</title>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>	
-	</head>
-	<body>
-		<h1>Les offres de stages</h1>
-		<!--/* On appelle l'URL 'add' du contôleur */-->
-		<a th:href="@{add}" href='formulaireOffreStage.html'>Ajouter une offre</a>
-		<!--/* On affiche un éventuel message d'erreur */-->
-		<h3 th:text="${message}">Message de succès ou d'erreur</h3>				
-                
-                    <div th:each="o: ${offreStage}">
-                        <div th:text="${o.titre}">Titre de l'offre</div>
-                        <div>
-                            <span th:if="${o.proposeur == NULL}">Anonyme</span>
-                            <span th:unless="${o.proposeur == NULL}" th:text="${o.proposeur.nom}">Nom de l'entreprise</span>
-                        </div>
-                        <div th:text="${o.description}">Description de l'offre</div>
-                        <div>
-                            <span th:text="${o.dateDebut}">Date de début</span>
-                            <span th:text="${o.dateFin}">Date de fin</span>
-                        </div>
-                        <div><a th:href="@{delete(id=${o.id})}">Supprimer l'offre n° [[${o.id}]]</a></div>
-                    </div>
-                
-		<hr/>
-		<a th:href="@{/}" href="../static/index.html">Retour au menu</a>
-		<hr/>
-	</body>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Liste des offres de stage</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>
+</head>
+<body>
+<section id="titre">
+	<div class="container">
+		<div class="titre">
+			<a class="retour" th:href="@{/}" href="../static/index.html">Retour au menu</a>
+			<h1>Les offres de stages</h1>
+		</div>
+	</div>
+</section>
+<section id="ajouterSupprimer">
+	<div class="container">
+		<div class="ajouterSupprimer">
+			<div class="row">
+				<!--/* On appelle l'URL 'add' du contôleur */-->
+				<a th:href="@{add}" href='formulaireOffreStage.html'>Ajouter une offre</a>
+				<a th:href="@{delete(id=${o.id})}">Supprimer l'offre n° [[${o.id}]]</a>
+			</div>
+			<!--/* On affiche un éventuel message d'erreur */-->
+			<h3 th:text="${message}">Message de succès ou d'erreur</h3>
+		</div>
+	</div>
+</section>
+
+<section id="toutesLesOffres">
+	<div class="container">
+		<div class="toutesLesOffres row">
+			<div class="offre">
+				<div class="row enteteOffre">
+					<img src="https://www.png-gratuit.com/img/cercle-noir-fond-transparent.png" alt="logo entreprise">
+					<div class="titreOffre" th:each="o: ${offreStage}>
+						<h2 th:text="${o.titre}">Titre de l'offre qui peut être relativement long</h2>
+						<i class="latin" th:if="${o.proposeur == NULL}">Anonyme</i>
+						<i class="latin" th:unless="${o.proposeur == NULL}" th:text="${o.proposeur.nom}">Nom de l'entreprise</i>
+						/
+						<b th:text="${o.dateDebut}">Date de début - </b>
+						<b th:text="${o.dateFin}">Date de fin</b>
+					</div>
+				</div>
+				<div class="descriptionOffre" th:each="o: ${offreStage}>
+					<p th:text="${o.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mollis nunc eget ligula feugiat, ornare lobortis nisi tempor. Sed odio enim, congue sed venenatis nec, egestas quis turpis. Sed et felis lacus. Aenean faucibus dolor eu sem vestibulum consequat. Nullam accumsan eleifend purus, sed tincidunt nunc gravida non. Morbi vel mattis tortor, sed aliquet massa. Vivamus mollis, augue gravida blandit vehicula, nibh est euismod odio, eu laoreet neque est nec lacus. Sed pharetra euismod nulla non pellentesque. </p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</body>
 </html>
