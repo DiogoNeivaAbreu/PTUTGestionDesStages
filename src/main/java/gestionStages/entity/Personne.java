@@ -11,7 +11,6 @@ public class Personne {
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Integer id;
 
-    @Column(unique=true)
     @NonNull
     private String nom;
     
@@ -24,6 +23,7 @@ public class Personne {
     @NonNull
     private String telephone;
     
+    @NonNull
     @Email
     private String email;
 }

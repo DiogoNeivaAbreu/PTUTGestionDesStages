@@ -13,7 +13,7 @@ public class OffreStage extends Stage{
     private String niveauRequis;
     
     //@NonNull
-    private Boolean accepté;
+    private Boolean accepte;
     
     //@NonNull
     private Boolean entretien;
