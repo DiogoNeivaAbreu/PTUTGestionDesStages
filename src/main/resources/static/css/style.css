@@ -262,3 +262,18 @@ div.descriptionOffre{
 div.descriptionOffre p{
 	text-align: justify;
 }
+
+.toutesLesOffres a{
+        padding: 5px 15px;
+	border-radius: 10px;
+        margin-left: 900px;
+	color: #000055;
+	background-color: #E6E7ED;
+	text-decoration: none;
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 1.2em;
+	font-weight: 700;
+
+	box-shadow: -3px -3px 6px rgba(255, 255, 255, 0.75),
+	3px 3px 6px rgba(0, 0, 0, 0.3);
+}

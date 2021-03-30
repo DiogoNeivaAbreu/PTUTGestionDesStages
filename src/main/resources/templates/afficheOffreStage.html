@@ -27,7 +27,6 @@ Le contrôleur transmet deux informations à cette vue :
 			<div class="row">
 				<!--/* On appelle l'URL 'add' du contôleur */-->
 				<a th:href="@{add}" href='formulaireOffreStage.html'>Ajouter une offre</a>
-				<a th:href="@{delete(id=${o.id})}">Supprimer l'offre n° [[${o.id}]]</a>
 			</div>
 			<!--/* On affiche un éventuel message d'erreur */-->
 			<h3 th:text="${message}">Message de succès ou d'erreur</h3>
@@ -38,10 +37,10 @@ Le contrôleur transmet deux informations à cette vue :
 <section id="toutesLesOffres">
 	<div class="container">
 		<div class="toutesLesOffres row">
-			<div class="offre">
+			<div class="offre" th:each="o: ${offreStage}">
 				<div class="row enteteOffre">
-					<img src="https://www.png-gratuit.com/img/cercle-noir-fond-transparent.png" alt="logo entreprise">
-					<div class="titreOffre" th:each="o: ${offreStage}>
+                                    <img src="https://www.png-gratuit.com/img/cercle-noir-fond-transparent.png" alt="logo entreprise"></img>
+					<div class="titreOffre">
 						<h2 th:text="${o.titre}">Titre de l'offre qui peut être relativement long</h2>
 						<i class="latin" th:if="${o.proposeur == NULL}">Anonyme</i>
 						<i class="latin" th:unless="${o.proposeur == NULL}" th:text="${o.proposeur.nom}">Nom de l'entreprise</i>
@@ -50,8 +49,9 @@ Le contrôleur transmet deux informations à cette vue :
 						<b th:text="${o.dateFin}">Date de fin</b>
 					</div>
 				</div>
-				<div class="descriptionOffre" th:each="o: ${offreStage}>
+				<div class="descriptionOffre">
 					<p th:text="${o.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mollis nunc eget ligula feugiat, ornare lobortis nisi tempor. Sed odio enim, congue sed venenatis nec, egestas quis turpis. Sed et felis lacus. Aenean faucibus dolor eu sem vestibulum consequat. Nullam accumsan eleifend purus, sed tincidunt nunc gravida non. Morbi vel mattis tortor, sed aliquet massa. Vivamus mollis, augue gravida blandit vehicula, nibh est euismod odio, eu laoreet neque est nec lacus. Sed pharetra euismod nulla non pellentesque. </p>
+                                        <a th:href="@{delete(id=${o.id})}">Supprimer l'offre</a>
 				</div>
 			</div>
 		</div>
