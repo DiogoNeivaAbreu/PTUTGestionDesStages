@@ -39,7 +39,7 @@ Le contrôleur transmet deux informations à cette vue :
 		<div class="toutesLesOffres row">
 			<div class="offre" th:each="o: ${offreStage}">
 				<div class="row enteteOffre">
-                                    <img src="https://www.png-gratuit.com/img/cercle-noir-fond-transparent.png" alt="logo entreprise"></img>
+					<img src="https://www.png-gratuit.com/img/cercle-noir-fond-transparent.png" alt="logo entreprise"></img>
 					<div class="titreOffre">
 						<h2 th:text="${o.titre}">Titre de l'offre qui peut être relativement long</h2>
 						<i class="latin" th:if="${o.proposeur == NULL}">Anonyme</i>
@@ -51,7 +51,7 @@ Le contrôleur transmet deux informations à cette vue :
 				</div>
 				<div class="descriptionOffre">
 					<p th:text="${o.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mollis nunc eget ligula feugiat, ornare lobortis nisi tempor. Sed odio enim, congue sed venenatis nec, egestas quis turpis. Sed et felis lacus. Aenean faucibus dolor eu sem vestibulum consequat. Nullam accumsan eleifend purus, sed tincidunt nunc gravida non. Morbi vel mattis tortor, sed aliquet massa. Vivamus mollis, augue gravida blandit vehicula, nibh est euismod odio, eu laoreet neque est nec lacus. Sed pharetra euismod nulla non pellentesque. </p>
-                                        <a th:href="@{delete(id=${o.id})}">Supprimer l'offre</a>
+					<a th:href="@{delete(id=${o.id})}">Supprimer l'offre</a>
 				</div>
 			</div>
 		</div>
