@@ -290,6 +290,11 @@ section#formulaireLogin input[type="password"]{
 	padding-left: 20px;
 }
 
+section#formulaireLogin input[type="text"]:focus,
+section#formulaireLogin input[type="password"]:focus{
+	outline: none;
+}
+
 div.lienCreerUnCompte{
 	width: 75%;
 	margin-left: auto;
