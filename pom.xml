@@ -78,6 +78,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+                <dependency>
+			<!-- Driver JDBC Postgres pour déploiement sur heroku -->
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+                
 		<!-- Pour produire du XML -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
