@@ -22,8 +22,8 @@
             <!-- Pour les utilisateurs qui ont le rôle 'ROLE_ADMIN' -->
             <div sec:authorize="hasRole('ROLE_ADMIN')">
                 <h3>Vous êtes administrateur</h3>
-                <a href="#" th:href="@{/h2-console}">Console d'administration de la BD (JDBC URL: jdbc:h2:mem:testdb) - désactivé sur Heroku</a><br>
-                <a href="#" th:href="@{/admin/pageAdmin}">Page réservée aux admins</a>                
+                <a href="#" th:href="@{/h2-console}">Console d'administration de la BD (JDBC URL: jdbc:h2:mem:testdb) - désactivé sur Heroku</a> <br />
+                <a href="#" th:href="@{/admin/pageAdmin}">Page réservée aux admins</a>                 
             </div>
             <!-- Pour les utilisateurs qui ont le rôle 'ROLE_USER' -->
             <div sec:authorize="hasRole('ROLE_USER')">
