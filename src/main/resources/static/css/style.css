@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
 body{
 	padding: 0;
 	margin: 0;
-	background-color: #e6e7ed;
+	background-color: #E6E7ED;
 }
 
 .container{
@@ -209,7 +211,7 @@ td:nth-child(2n-1){
 
 
 /*------------------------------------------------
- Affiche offre stage
+ Afficher offre stage
  ------------------------------------------------*/
 section#ajouterSupprimer h3{
 	color: #000055;
@@ -263,17 +265,52 @@ div.descriptionOffre p{
 	text-align: justify;
 }
 
-.toutesLesOffres a{
-        padding: 5px 15px;
-	border-radius: 10px;
-        margin-left: 900px;
-	color: #000055;
-	background-color: #E6E7ED;
+/*------------------------------------------------
+Login
+------------------------------------------------*/
+section#formulaireLogin form, section#formulaireCreerUnCompte form{
+	width: 450px;
+	padding: 50px;
+	border-radius: 50px;
+	margin: 10vh auto 0 auto;
+	box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.75),
+	10px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+section#formulaireCreerUnCompte form{
+	width: 600px;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+section#formulaireLogin input[type="text"],
+section#formulaireLogin input[type="password"]{
+	text-align: left;
+	padding-left: 20px;
+}
+
+div.lienCreerUnCompte{
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+section#formulaireLogin a{
 	text-decoration: none;
+}
+
+section#formulaireLogin p{
+	width: 94%;
+	padding: 10px;
+	border: none;
+	border-radius: 20px;
+	margin-top: 20px;
+	background-color: #E6C222;
+	color: #FFFFFF;
 	font-family: "Nunito Sans", sans-serif;
 	font-size: 1.2em;
-	font-weight: 700;
-
-	box-shadow: -3px -3px 6px rgba(255, 255, 255, 0.75),
-	3px 3px 6px rgba(0, 0, 0, 0.3);
+	text-align: center;
+	cursor: pointer;
 }
+

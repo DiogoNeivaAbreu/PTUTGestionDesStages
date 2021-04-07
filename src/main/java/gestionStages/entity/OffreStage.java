@@ -17,9 +17,11 @@ public class OffreStage {
     
     @NonNull
     private String description;
-    
+
+    @NonNull
     private LocalDate dateDebut;
-    
+
+    @NonNull
     private LocalDate dateFin;
     
     private String horaires;

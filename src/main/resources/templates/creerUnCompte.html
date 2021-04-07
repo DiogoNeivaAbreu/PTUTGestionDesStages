@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>    <title>Créer un compte</title>
+</head>
+<body>
+<section id="formulaireCreerUnCompte">
+    <div class="formulaireCreerUnCompte">
+        <form action="">
+            <div style="width: 45%">
+                <label for="nom">Nom</label>
+                <input id="nom" type="text" name="nom">
+            </div>
+            <div style="width: 45%">
+                <label for="prenom">Prénom</label>
+                <input id="prenom" type="text" name="prenom">
+            </div>
+            <div style="width: 45%">
+                <label for="dateNaissance">Date de naissance</label>
+                <input id="dateNaissance" type="date" name="dateNaissance">
+            </div>
+            <div style="width: 45%">
+                <label for="anneeEtude">Année d'étude</label>
+                <select name="anneeEtude" id="anneeEtude">
+                    <option value="1">1ère année</option>
+                    <option value="2">2e année</option>
+                    <option value="3">3e année</option>
+                    <option value="4">4e année</option>
+                    <option value="5">5e année</option>
+                </select>
+            </div>
+            <div style="width: 100%">
+                <label for="mail">Adresse e-mail</label>
+                <input id="mail" type="mail" name="mail">
+            </div>
+            <div style="width: 100%">
+                <label for="motDePasse">Mot de passe</label>
+                <input id="motDePasse" type="password" name="motDePasse">
+            </div>
+            <input type="submit" value="Créer un compte">
+        </form>
+    </div>
+</section>
+</body>
+</html>
