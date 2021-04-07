@@ -59,9 +59,4 @@ public class LoginAndRegistrationController {
 
         return "login";
     }
-
-    @GetMapping({"/", "/welcome"})
-    public String welcome(Model model) {
-        return "welcome";
-    }
 }
