@@ -1,7 +1,7 @@
 package gestionStages.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import monprojet.entity.Utilisateur;
+import gestionStages.entity.Utilisateur;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;

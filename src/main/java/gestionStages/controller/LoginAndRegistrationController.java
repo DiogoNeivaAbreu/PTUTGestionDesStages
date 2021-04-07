@@ -1,6 +1,6 @@
 package gestionStages.controller;
 
-import monprojet.entity.Utilisateur;
+import gestionStages.entity.Utilisateur;
 import gestionStages.service.SecurityService;
 import gestionStages.service.UserService;
 import gestionStages.validator.UserValidator;

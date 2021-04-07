@@ -1,6 +1,6 @@
 package gestionStages.dao;
 
-import monprojet.entity.Role;
+import gestionStages.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

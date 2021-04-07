@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
-import monprojet.entity.Utilisateur;
+import gestionStages.entity.Utilisateur;
 
 @Entity
 // Lombok

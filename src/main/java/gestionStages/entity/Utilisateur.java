@@ -16,11 +16,7 @@ import java.util.List;
 
 @Entity
 // Lombok
-@Getter
-@Setter
-@NoArgsConstructor
-@RequiredArgsConstructor
-@ToString
+@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 public class Utilisateur implements UserDetails {
 
     @Id

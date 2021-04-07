@@ -1,7 +1,7 @@
 package gestionStages.validator;
 
 import gestionStages.entity.Utilisateur;
-import monprojet.service.UserService;
+import gestionStages.service.UserService;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
