@@ -9,17 +9,18 @@
 <body>
 <section id="formulaireLogin">
     <div class="formulaireLogin">
-        <form action="">
+        <form method="POST" th:action="@{/login}" action="#" class="form-signin">
             <label for="identifiant">Identifiant</label>
-            <input id="identifiant" type="text" name="identifiant">
+            <input id="identifiant" type="text" name="username">
             <label for="motDePasse">Mot de passe</label>
             <input id="motDePasse" type="password" name="motDePasse">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
             <input type="submit" value="Connexion">
 
             <hr>
 
             <div class="lienCreerUnCompte">
-                <a href="creerUnCompte.html">
+                <a th:href="@{/creerUnCompte}" href="creerUnCompte.html">
                     <p>Créer un compte</p>
                 </a>
             </div>
