@@ -90,8 +90,7 @@ public class OffreStageController {
     public String supprimeUneOffrePuisMontreLaListe(@RequestParam("id") OffreStage offreStage, RedirectAttributes redirectInfo) {
         String message = "L'offre '" + offreStage.getTitre() + "' a bien été supprimée";
         try {
-            System.out.println("bonjour");
-            //dao.delete(offreStage); // Ici on peut avoir une erreur 
+            dao.delete(offreStage); // Ici on peut avoir une erreur 
         } catch (DataIntegrityViolationException e) {
             // violation de contrainte d'intégrité si on essaie de supprimer une offre de stage
             message = "Erreur : Impossible de supprimer l'offre '" + offreStage.getTitre() + "'";

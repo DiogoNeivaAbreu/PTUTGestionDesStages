@@ -21,4 +21,7 @@ public class Stage {
     private LocalDate dateFin;
     
     private String horaires;
+    
+    @OneToOne(mappedBy = "stage")
+    private OffreStage offre;
 }
