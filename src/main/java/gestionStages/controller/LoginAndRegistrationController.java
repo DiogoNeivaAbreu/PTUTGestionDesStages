@@ -42,7 +42,7 @@ public class LoginAndRegistrationController {
             return "registration";
         }
 
-        userService.save(userForm);
+        userService.saveUser(userForm);
 
         securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
 
