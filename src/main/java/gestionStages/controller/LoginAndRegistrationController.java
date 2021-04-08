@@ -27,19 +27,19 @@ public class LoginAndRegistrationController {
         this.userValidator = userValidator;
     }
 
-    @GetMapping("/creerUnCompte")
+    @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("userForm", new Utilisateur());
 
-        return "creerUnCompte";
+        return "registration";
     }
 
-    @PostMapping("/creerUnCompte")
+    @PostMapping("/registration")
     public String registration(@Valid @ModelAttribute("userForm") Utilisateur userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
-            return "creerUnCompte";
+            return "registration";
         }
 
         userService.save(userForm);
@@ -60,8 +60,8 @@ public class LoginAndRegistrationController {
         return "login";
     }
 
-//    @GetMapping({"/", "/welcome"})
-//    public String welcome(Model model) {
-//        return "welcome";
-//    }
+    @GetMapping({"/", "/welcome"})
+    public String welcome(Model model) {
+        return "welcome";
+    }
 }
