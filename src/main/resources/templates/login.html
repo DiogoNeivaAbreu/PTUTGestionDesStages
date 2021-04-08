@@ -4,18 +4,16 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Log in with your account</title>
-        <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" href="../static/css/common.css" />
+        <title>Page de connexion</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>
     </head>
 
     <body>
     <section id="formulaireLogin">
         <div class="formulaireLogin">
-            <form method="POST" th:action="@{/login}" action="#" class="form-signin">
-                <h2 class="form-heading">Log in</h2>
+            <form method="POST" th:action="@{/login}" action="#">
 
-                <div  class="form-group" th:classappend="${#strings.isEmpty(error) ? 'has-error' : ''}">
+                <div th:classappend="${#strings.isEmpty(error) ? 'has-error' : ''}">
                     <span th:text="${message}">Message</span>
                     <label for="identifiant">Identifiant</label>
                     <input id="identifiant" name="username" type="text"/>
