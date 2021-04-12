@@ -22,6 +22,14 @@ public class Stage {
     
     private String horaires;
     
+    private EtatStage etatStage;
+    
     @OneToOne(mappedBy = "stage")
     private OffreStage offre;
+    
+    @OneToOne(mappedBy = "stageEtudiant")
+    private Etudiant stagiaire;
+    
+    @ManyToOne
+    Entreprise entrepriseAccueil;
 }

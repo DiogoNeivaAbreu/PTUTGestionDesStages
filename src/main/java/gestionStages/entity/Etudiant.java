@@ -20,8 +20,11 @@ public class Etudiant extends Personne{
     @ManyToOne 
     Ecole univ;
     
-    public void PostulerOffre(OffreStage offre, Entreprise entreprise){
-        // TODO 
+    @OneToOne
+    private Stage stageEtudiant;
+    
+    public void PostulerOffre(OffreStage offre){
+        listeoffres.add(offre);
     }
     
     public void AjouterDesDocuments(Administratif documents){

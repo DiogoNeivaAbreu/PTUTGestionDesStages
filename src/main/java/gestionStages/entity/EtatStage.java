@@ -1,0 +1,5 @@
+package gestionStages.entity;
+
+public enum EtatStage {
+    ENATTENTEDEVALIDATIONOFFRE, VALIDE, NONCOMMENCE, ENCOURS, FINI, RAPPORT, SOUTENANCE
+}

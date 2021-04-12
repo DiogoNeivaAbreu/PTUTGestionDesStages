@@ -30,19 +30,14 @@ public class OffreStage {
     private String niveauRequis;
     
     //@NonNull
-    private Boolean accepte;
-    
-    //@NonNull
-    private Boolean entretien;
-    
-    //@NonNull
     private String CV;
     
     //@NonNull
     private String lettreMotivation;
     
+    private EtatOffreStage etatOffre;
+    
     @ManyToMany
-    @ToString.Exclude
     List<Etudiant> candidats = new LinkedList<>();
     
     @ManyToOne

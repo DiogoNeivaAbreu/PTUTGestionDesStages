@@ -39,8 +39,10 @@ public class Entreprise {
     List<MaitreStageEntreprise> tuteurs = new LinkedList<>();
     
     @OneToMany(mappedBy="proposeur")
-    @ToString.Exclude
     private List<OffreStage> listeOffres = new LinkedList<>();
+    
+    @OneToMany(mappedBy="entrepriseAccueil")
+    private List<Stage> stagesProposes = new LinkedList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @Setter(AccessLevel.NONE)
