@@ -27,7 +27,7 @@ public class PersonneController {
     @GetMapping(path = "show")
     public String afficheToutesLesPersonnes(Model model) {
         model.addAttribute("personne", dao.findAll());
-        return "profilEtudiant";
+        return "tousLesEtudiants";
     }
 
     /**

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des étudiants</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<section id="titre">
+    <div class="container">
+        <div class="titre">
+            <a class="retour" th:href="@{/}" href="../static/index.html">Retour au menu</a>
+            <h1>Tous les étudiants</h1>
+        </div>
+    </div>
+</section>
+<section id="filtres">
+    <div class="container">
+        <div class="filtres row">
+            <div class="boutons">
+                <!--
+                    <a href="?nom" type="checkbox">Nom</a>
+                    <a href="?prenom">Prénom</a>
+                    <a href="?anneeEtude">Année d'étude</a>
+                -->
+                <button type="button" id="nom">Nom</button>
+                <button type="button" id="prenom">Prénom</button>
+                <button type="button" id="anneeEtude">Année d'étude</button>
+                <!--
+                    <form action="#" method="GET">
+                        <div>
+                            <input type="checkbox" id="filtreNom" name="nom">
+                            <label for="filtreNom">Nom</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="filtrePrenom" name="prenom">
+                            <label for="filtrePrenom">Prénom</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="filtreAnneeEtude" name="anneeEtude">
+                            <label for="filtreAnneeEtude">Année d'étude</label>
+                        </div>
+                    </form>
+                -->
+            </div>
+
+            <div class="rechercheEtudiant">
+                <input type="text" name="rechercheEtudiant" placeholder="Recherche un étudiant">
+            </div>
+        </div>
+    </div>
+</section>
+<section id="tousLesEtudiants">
+    <div class="container">
+        <div class="tousLesEtudiants">
+            <table>
+                <tr th:each="p: ${personne}">
+                    <td th:text="${p.nom}">Nom</td>
+                    <td th:text="${p.prenom}">Prenom</td>
+                    <td th:text="${p.telephone}">06 60 66 00 06</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+<script th:src="@{/scripts/tousLesEtudiants.js}" src="../static/scripts/tousLesEtudiants.js"></script>
+</body>
+</html>
