@@ -191,12 +191,11 @@ div.informations{
 
 }
 
-table{
+div.informations table{
 	padding: 10px;
-        width: 100%;
 }
 
-td{
+div.informations td{
 	font-family: "Nunito Sans", sans-serif;
 	font-size: 20px;
 	color: #000055;
@@ -205,7 +204,7 @@ td{
 	padding: 20px 0;
 }
 
-td:nth-child(2n-1){
+div.informations td:nth-child(2n-1){
 	color: #DF303D;
 	font-size: 24px;
 }
@@ -266,9 +265,13 @@ div.descriptionOffre p{
 	text-align: justify;
 }
 
-/*------------------------------------------------
+/*
+------------------------------------------------
+------------------------------------------------
 Login
-------------------------------------------------*/
+-----------------------------------------------
+-----------------------------------------------
+*/
 section#formulaireLogin form, section#formulaireCreerUnCompte form{
 	width: 450px;
 	padding: 50px;
@@ -289,11 +292,6 @@ section#formulaireLogin input[type="text"],
 section#formulaireLogin input[type="password"]{
 	text-align: left;
 	padding-left: 20px;
-}
-
-section#formulaireLogin input[type="text"]:focus,
-section#formulaireLogin input[type="password"]:focus{
-	outline: none;
 }
 
 div.lienCreerUnCompte{
@@ -320,3 +318,73 @@ section#formulaireLogin p{
 	cursor: pointer;
 }
 
+/*
+------------------------------------------------
+------------------------------------------------
+Liste tous les étudiants
+------------------------------------------------
+------------------------------------------------
+*/
+
+section#filtres div.filtres{
+	align-items: center;
+	justify-content: space-around;
+}
+
+section#filtres div.boutons{
+	width: 40%;
+	display: flex;
+	justify-content: center;
+}
+
+section#filtres div.rechercheEtudiant{
+	width: 40%;
+}
+
+section#filtres button{
+	padding: 10px 20px;
+	border: none;
+	border-radius: 30px;
+	margin: 20px;
+	background-color: #E6E7ED;
+	color: #000055;
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 1.1em;
+	box-shadow: -3px -3px 6px rgba(255, 255, 255, 0.75),
+	3px 3px 6px rgba(0, 0, 0, 0.3);
+	outline: none;
+}
+
+section#filtres input[type="text"]{
+	width: 100%;
+	outline: none;
+}
+
+div.tousLesEtudiants{
+	width: 100%;
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+	border-radius: 50px;
+	box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.75),
+	10px 10px 20px rgba(0, 0, 0, 0.3);
+
+}
+
+section#tousLesEtudiants table{
+	width: 90%;
+	border-collapse: collapse;
+}
+
+section#tousLesEtudiants td{
+	padding: 20px;
+	border-bottom: 1px solid #545352;
+	color: #000055;
+	font-weight: 600;
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 1.1em;
+}
+
+section#tousLesEtudiants td:first-child{
+	text-transform: uppercase;
+}
