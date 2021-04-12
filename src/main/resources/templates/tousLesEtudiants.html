@@ -5,13 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+<section th:insert="fragments/header :: header">Header</section>
 <section id="titre">
     <div class="container">
         <div class="titre">
-            <a class="retour" th:href="@{/}" href="../static/index.html">Retour au menu</a>
             <h1>Tous les étudiants</h1>
         </div>
     </div>

@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>
     </head>
     <body>
+    <section th:insert="fragments/header :: header">Header</section>
         <!-- Pour les visiteurs non authentifiés -->
         <div sec:authorize="isAnonymous()">
             <h2>Welcome to our application | please <a th:href="@{/login}">Login</a></h2>

@@ -57,7 +57,7 @@ a.retour:hover, .ajouterSupprimer a:hover{
 }
 
 div.titre{
-	margin: 20px 0;
+	margin: 30px 0;
 }
 
 div.grosTitre h1{
@@ -77,7 +77,7 @@ h1{
 	margin: 0;
 	color: #000055;
 	font-family: "Nunito Sans", sans-serif;
-	font-size: 2.5em;
+	font-size: 3em;
 	text-align: center;
 }
 
@@ -140,6 +140,35 @@ input[type="submit"]{
 
 div.dateDebut, div.dateFin{
 	width: 45%;
+}
+
+/*
+------------------------------------------------
+------------------------------------------------
+Navbar
+------------------------------------------------
+------------------------------------------------
+*/
+
+div.navbar{
+	padding: 20px;
+	background-color: #E6E7ED;
+}
+
+div.navbar a{
+	margin: 0 30px;
+	text-decoration: none;
+	font-family: "Nunito Sans", sans-serif;
+	color: #000055;
+	font-size: 1.5em;
+	font-weight: 600;
+	background: linear-gradient(to top, rgb(0, 0, 85) 0%, rgb(0, 0, 85) 2px, transparent 3px) no-repeat;
+	background-size: 0% 100%;
+	transition: background-size 0.5s;
+}
+
+div.navbar a:hover{
+	background-size: 100% 100%;
 }
 
 
@@ -388,3 +417,5 @@ section#tousLesEtudiants td{
 section#tousLesEtudiants td:first-child{
 	text-transform: uppercase;
 }
+
+
