@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>    <title>Créer un compte</title>
 </head>
 <body>
 <section id="formulaireCreerUnCompte">
     <div class="formulaireCreerUnCompte">
         <form method="POST" th:object="${userForm}" th:action="@{/creerUnCompte}">
-            <div style="width: 45%">
+            <div style="width: 45%" th:classappend="${#fields.hasErrors('username') ? 'has-error' : ''}">
                 <label for="nom">Nom</label>
-                <input id="nom" type="text" name="nom">
+                <input id="nom" type="text" name="nom" />
             </div>
             <div style="width: 45%">
                 <label for="prenom">Prénom</label>
-                <input id="prenom" type="text" name="prenom">
+                <input id="prenom" type="text" name="prenom"/>
+            </div>
+            <div style="width: 45%">
+                <label for="username">Nom d'utilisateur</label>
+                <input id="prenom" type="text" name="username" th:field="*{username}"/>
+                <ul><li th:errors="*{username}">Erreur sur le prénom</li></ul>
             </div>
             <div style="width: 45%">
                 <label for="dateNaissance">Date de naissance</label>
-                <input id="dateNaissance" type="text" name="dateNaissance" placeholder="jj/mm/aaaa">
+                <input id="dateNaissance" type="text" name="dateNaissance" placeholder="jj/mm/aaaa"/>
             </div>
             <div style="width: 45%">
                 <label for="anneeEtude">Année d'étude</label>
@@ -31,15 +36,22 @@
                     <option value="5">5e année</option>
                 </select>
             </div>
-            <div style="width: 100%">
+            <div style="width: 100%" th:classappend="${#fields.hasErrors('email') ? 'has-error' : ''}">
                 <label for="mail">Adresse e-mail</label>
-                <input id="mail" type="email" name="mail">
+                <input id="mail" type="email" name="mail" th:field="*{email}"/>
+                <ul><li th:errors="*{email}">Erreur sur le mail</li></ul>
             </div>
-            <div style="width: 100%">
+            <div style="width: 100%" th:classappend="${#fields.hasErrors('password') ? 'has-error' : ''}">
                 <label for="motDePasse">Mot de passe</label>
-                <input id="motDePasse" type="password" name="motDePasse">
+                <input id="motDePasse" type="password" name="motDePasse" th:field="*{password}"/>
+                <ul><li th:errors="*{password}">Erreur sur le password</li></ul>
             </div>
-            <input type="submit" value="Créer un compte">
+            <div style="width: 100%" th:classappend="${#fields.hasErrors('passwordConfirm') ? 'has-error' : ''}">
+                <label for="motDePasse">Confirmer le votre mot de passe</label>
+                <input id="motDePasse" type="password" name="motDePasse" th:field="*{passwordConfirm}"/>
+                <ul><li th:errors="*{passwordConfirm}">Erreur confirmation password</li></ul>
+            </div>
+            <input type="submit" value="Créer un compte"/>
         </form>
     </div>
 </section>

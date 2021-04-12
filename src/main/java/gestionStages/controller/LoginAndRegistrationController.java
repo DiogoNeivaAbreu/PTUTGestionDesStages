@@ -27,26 +27,26 @@ public class LoginAndRegistrationController {
         this.userValidator = userValidator;
     }
 
-    @GetMapping("/registration")
+    @GetMapping("/creerUnCompte")
     public String registration(Model model) {
         model.addAttribute("userForm", new Utilisateur());
 
-        return "registration";
+        return "creerUnCompte";
     }
 
-    @PostMapping("/registration")
+    @PostMapping("/creerUnCompte")
     public String registration(@Valid @ModelAttribute("userForm") Utilisateur userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
-            return "registration";
+            return "creerUnCompte";
         }
 
         userService.saveUser(userForm);
 
         securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
 
-        return "redirect:/index";
+        return "redirect:/welcome";
     }
 
     @GetMapping("/login")
