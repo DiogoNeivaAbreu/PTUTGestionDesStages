@@ -19,7 +19,7 @@
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
 
-            <h2>Welcome <span>Untel</span>  | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+            <h2>Welcome <span th:text="${#authentication.name}">Untel</span>  | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
             <!-- Pour les utilisateurs qui ont le rôle 'ROLE_ADMIN' -->
             <div sec:authorize="hasRole('ROLE_ADMIN')">
                 <h3>Vous êtes administrateur</h3>
