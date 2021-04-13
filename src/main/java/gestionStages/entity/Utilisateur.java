@@ -31,9 +31,19 @@ public class Utilisateur implements UserDetails {
 
     @NonNull // Lombok
     private String password;
+    
+    @NonNull
+    private String nom;
+    
+    @NonNull
+    private String prenom;
+   
+    private String adresse;
+    
+    private String telephone;
 
     @NonNull // Lombok
-    @Email // Doit avoir la forme d'une adresse email
+    //@Email // Doit avoir la forme d'une adresse email
     private String email;
 
     @Transient // Non enregistré dans la BD

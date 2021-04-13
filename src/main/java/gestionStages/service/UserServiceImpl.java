@@ -26,6 +26,10 @@ public class UserServiceImpl implements UserService {
     private String adminPassword;
     @Value("${admin.email}")
     private String adminEmail;
+    @Value("${admin.nom}")
+    private String adminNom;
+    @Value("${admin.prenom}")
+    private String adminPrenom;
 
     public UserServiceImpl(UserRepository userRepository, EntrepriseRepository entrepriseRepository,RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
@@ -45,16 +49,16 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-    @Override
-    public void saveEntreprise(Entreprise entreprise) {
-        // Par défaut on attribue le rôle 'ROLE_ENTREPRISE' aux nouvelles entreprises
-        // Ce rôle est créé automatiquement au lancement de l'application
-        Role uneEntreprise = roleRepository.findByName("ROLE_ENTREPRISE").orElseThrow();
-        // On crypte le mot de passe avant de l'enregistrer
-        entreprise.setPassword(bCryptPasswordEncoder.encode(entreprise.getPassword()));
-        entreprise.getRoles().add(uneEntreprise);
-        entrepriseRepository.save(entreprise);
-    }
+//    @Override
+//    public void saveEntreprise(Entreprise entreprise) {
+//        // Par défaut on attribue le rôle 'ROLE_ENTREPRISE' aux nouvelles entreprises
+//        // Ce rôle est créé automatiquement au lancement de l'application
+//        Role uneEntreprise = roleRepository.findByName("ROLE_ENTREPRISE").orElseThrow();
+//        // On crypte le mot de passe avant de l'enregistrer
+//        entreprise.setPassword(bCryptPasswordEncoder.encode(entreprise.getPassword()));
+//        entreprise.getRoles().add(uneEntreprise);
+//        entrepriseRepository.save(entreprise);
+//    }
 
     @Override
     public Utilisateur findByUserName(String username) {
@@ -71,7 +75,7 @@ public class UserServiceImpl implements UserService {
             roleRepository.save(roleAdmin);
             roleRepository.save(roleUser);
             roleRepository.save(roleEntreprise);
-            Utilisateur firstAdmin = new Utilisateur(adminLogin, adminPassword, adminEmail);
+            Utilisateur firstAdmin = new Utilisateur(adminLogin, adminPassword, adminEmail, adminNom, adminPrenom);
             // On crypte le mot de passe avant de l'enregistrer
             firstAdmin.setPassword(bCryptPasswordEncoder.encode(firstAdmin.getPassword()));
             firstAdmin.getRoles().add(roleAdmin);

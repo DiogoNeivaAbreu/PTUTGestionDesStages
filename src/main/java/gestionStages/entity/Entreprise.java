@@ -44,10 +44,6 @@ public class Entreprise {
     @OneToMany(mappedBy="entrepriseAccueil")
     private List<Stage> stagesProposes = new LinkedList<>();
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @Setter(AccessLevel.NONE)
-    private List<Role> roles = new LinkedList<>();
-
     
     public void AjouterOffre(OffreStage offre){
         // TODO 

@@ -8,14 +8,14 @@ import lombok.*;
 
 @Getter @Setter @NoArgsConstructor @ToString
 @Entity // Une entité JPA
-public class Etudiant extends Personne{
+public class Etudiant extends Utilisateur{
 
     //@NonNull
     private String anneeEtude;
     
     @ManyToMany(mappedBy= "candidats")
     @ToString.Exclude
-    private List<OffreStage> listeoffres = new LinkedList<>();
+    private List<OffreStage> listeOffres = new LinkedList<>();
     
     @ManyToOne 
     Ecole univ;
@@ -23,8 +23,8 @@ public class Etudiant extends Personne{
     @OneToOne
     private Stage stageEtudiant;
     
-    public void PostulerOffre(OffreStage offre){
-        listeoffres.add(offre);
+    public void postulerOffre(OffreStage offreStage) {
+        listeOffres.add(offreStage);
     }
     
     public void AjouterDesDocuments(Administratif documents){

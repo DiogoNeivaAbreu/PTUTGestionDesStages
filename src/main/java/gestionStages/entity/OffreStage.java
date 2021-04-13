@@ -45,4 +45,5 @@ public class OffreStage {
     
     @OneToOne
     private Stage stage;
+    
 }

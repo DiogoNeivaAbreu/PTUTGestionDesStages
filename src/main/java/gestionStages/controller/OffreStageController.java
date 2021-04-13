@@ -114,12 +114,12 @@ public class OffreStageController {
      * @param redirectInfo pour transmettre des paramètres lors de la redirection
      * @return une redirection vers l'affichage de la liste des offres
      */
-//    @PostMapping(path = "postule")
+//    @PostMapping(path = "postuler")
 //    public String postuleOffrePuisMontreLaListe(@RequestParam("id") OffreStage offreStage, RedirectAttributes redirectInfo) {
 //        String message;
 //        try {
 //            // cf. https://www.baeldung.com/spring-data-crud-repository-save
-//            dao3.save(offreStage);
+//            dao3.
 //            // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
 //            message = "Vous avez postulé à " + offreStage.getTitre() ;
 //        } catch (DataIntegrityViolationException e) {

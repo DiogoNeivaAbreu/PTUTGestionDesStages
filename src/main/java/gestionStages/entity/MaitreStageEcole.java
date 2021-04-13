@@ -5,7 +5,7 @@ import lombok.*;
 
 @Getter @Setter @NoArgsConstructor @ToString
 @Entity
-public class MaitreStageEcole extends Personne{
+public class MaitreStageEcole extends Utilisateur{
 
     //@NonNull
     private String matiereEnseignee;
