@@ -14,13 +14,7 @@ Le contrôleur transmet deux informations à cette vue :
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-<nav class="row container">
-    <a th:href="@{/}" href="../static/index.html">Retour au menu</a>
-    <a href="/personne/show">Mon profil</a>
-    <a href="../../offreStage/show">Les offres</a>
-    <a href="#">Ça en est où ?</a>
-</nav>
-
+<section id="header" th:insert="fragments/header :: header">Header</section>
 <img src="https://isis.univ-jfc.fr/sites/isis.univ-jfc.fr/files/images-titre/QUE-SONTILS-DEVENUS-picto2.svg" alt="user" class="iconeTitre">
 
 <section id="grosTitre">

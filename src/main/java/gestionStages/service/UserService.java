@@ -8,7 +8,7 @@ public interface UserService {
 
     void saveUser(Utilisateur user);
 
-    void saveEntreprise(Entreprise entreprise);
+    //void saveEntreprise(Entreprise entreprise);
 
     Utilisateur findByUserName(String username);
 }

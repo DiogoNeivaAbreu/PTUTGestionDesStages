@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
         user.getRoles().add(normal);
         userRepository.save(user);
     }
-
+/*
     @Override
     public void saveEntreprise(Entreprise entreprise) {
         // Par défaut on attribue le rôle 'ROLE_ENTREPRISE' aux nouvelles entreprises
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
         entreprise.getRoles().add(uneEntreprise);
         entrepriseRepository.save(entreprise);
     }
-
+*/
     @Override
     public Utilisateur findByUserName(String username) {
         return userRepository.findByUsername(username);
