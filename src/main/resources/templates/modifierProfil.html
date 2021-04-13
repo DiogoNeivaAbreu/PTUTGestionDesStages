@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des offres de stage</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>
+</head>
+<body>
+<section id="header" th:insert="fragments/header :: header">Header</section>
+<section id="titre">
+    <div class="container">
+        <div class="titre">
+            <h1>Modifier mon profil - <span>principal.username</span></h1>
+        </div>
+    </div>
+</section>
+
+<label for="nom">Nom</label>
+<input id="nom" type="text" name="nom" th:value="${#authentication}"/>
+
+<!--
+<section id="modifierProfil">
+    <div class="container">
+        <div class="modifierProfil">
+            <form method="POST">
+                <div style="width: 30%" th:classappend="${#fields.hasErrors('username') ? 'has-error' : ''}">
+
+                </div>
+                <div style="width: 30%">
+                    <label for="prenom">Prénom</label>
+                    <input id="prenom" type="text" name="prenom" value="principal.prenom"/>
+                </div>
+                <div style="width: 30%">
+                    <label for="dateNaissance">Date de naissance</label>
+                    <input id="dateNaissance" type="text" name="dateNaissance" placeholder="jj/mm/aaaa" value="principal.dateNaissance"/>
+                </div>
+                <div style="width: 30%">
+                    <label for="anneeEtude">Année d'étude</label>
+                    <select name="anneeEtude" id="anneeEtude">
+                        <option value="1">1ère année</option>
+                        <option value="2">2e année</option>
+                        <option value="3">3e année</option>
+                        <option value="4">4e année</option>
+                        <option value="5">5e année</option>
+                    </select>
+                </div>
+                <div style="width: 30%" th:classappend="${#fields.hasErrors('email') ? 'has-error' : ''}">
+                    <label for="mail">Adresse e-mail</label>
+                    <input id="mail" type="email" name="mail" value="principal.email"/>
+                    <ul><li th:errors="*{email}">Erreur sur le mail</li></ul>
+                </div>
+                <div style="width: 30%" th:classappend="${#fields.hasErrors('password') ? 'has-error' : ''}">
+                    <label for="motDePasse">Mot de passe</label>
+                    <input id="motDePasse" type="password" name="motDePasse" value="principal.password" />
+                    <ul><li th:errors="*{password}">Erreur sur le password</li></ul>
+                </div>
+                <input type="submit" value="Enregistrer les changements"/>
+            </form>
+        </div>
+    </div>
+</section>
+-->
+</body>
+</html>

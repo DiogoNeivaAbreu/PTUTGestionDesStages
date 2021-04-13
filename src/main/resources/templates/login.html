@@ -9,7 +9,7 @@
     </head>
 
     <body>
-    <section th:insert="fragments/header :: header">Header</section>
+    <section id="header" th:insert="fragments/header :: header">Header</section>
     <section id="formulaireLogin">
         <div class="formulaireLogin">
             <form method="POST" th:action="@{/login}" action="#">
