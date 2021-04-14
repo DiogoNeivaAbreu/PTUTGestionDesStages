@@ -36,7 +36,7 @@ nav{
 	margin: 50px 0;
 }
 
-a.retour, .ajouterSupprimer a{
+a.retour, .ajouterSupprimer a, .postuler a{
 	padding: 5px 15px;
 	border-radius: 10px;
 
@@ -49,9 +49,10 @@ a.retour, .ajouterSupprimer a{
 
 	box-shadow: -3px -3px 6px rgba(255, 255, 255, 0.75),
 	3px 3px 6px rgba(0, 0, 0, 0.3);
+	cursor: pointer;
 }
 
-a.retour:hover, .ajouterSupprimer a:hover{
+a.retour:hover, .ajouterSupprimer a:hover, .postuler a:hover{
 	box-shadow: inset -3px -3px 6px rgba(255, 255, 255, 0.75),
 	inset 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
@@ -173,9 +174,13 @@ div.navbar a:hover{
 }
 
 
-/*------------------------------------------------
- Mon profil étudiant
- ------------------------------------------------*/
+/*
+------------------------------------------------
+------------------------------------------------
+Mon profil étudiant
+------------------------------------------------
+------------------------------------------------
+*/
 div.monProfil{
 	margin-top: 100px;
 }
@@ -240,27 +245,54 @@ div.informations td:nth-child(2n-1){
 }
 
 
-/*------------------------------------------------
- Afficher offre stage
- ------------------------------------------------*/
+/*
+------------------------------------------------
+------------------------------------------------
+Afficher Offre Stage
+------------------------------------------------
+------------------------------------------------
+*/
 section#ajouterSupprimer h3{
 	color: #000055;
 	font-family: "Nunito Sans", sans-serif;
 }
 
-div.offre{
-	width: 100%;
-	background-color: #E6E7ED;
-	border-radius: 30px;
-	box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.75),
-	10px 10px 20px rgba(0, 0, 0, 0.3);
-	color: #000055;
-	font-family: "Nunito Sans", sans-serif;
+div.offreEtActions{
+	margin-bottom: 40px;
 }
 
-div.offre:hover{
+div.offre{
+	width: 85%;
+	border-radius: 30px;
+	background-color: #E6E7ED;
+	color: #000055;
+	font-family: "Nunito Sans", sans-serif;
+	box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.75),
+	10px 10px 20px rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+
+div.offre:active{
 	box-shadow: inset -10px -10px 20px rgba(255, 255, 255, 0.75),
 	inset 10px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+div.actionsSurOffre{
+	width: 15%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	text-align: center;
+}
+
+div.actionsSurOffre div{
+	width: 75%;
+	margin: 10px auto;
+}
+
+div.actionsSurOffre img{
+	border-radius: 15px;
 }
 
 div.enteteOffre{
@@ -293,6 +325,12 @@ div.descriptionOffre{
 
 div.descriptionOffre p{
 	text-align: justify;
+}
+
+div.supprimerOffre{
+	width: 50%;
+	border-radius: 20px;
+	/*background-color: rgb(180, 49, 48);*/
 }
 
 /*
@@ -429,5 +467,3 @@ section#tousLesEtudiants td{
 section#tousLesEtudiants td:first-child{
 	text-transform: uppercase;
 }
-
-
