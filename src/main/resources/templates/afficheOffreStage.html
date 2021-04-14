@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
 	<title>Liste des offres de stage</title>
 	<meta charset="UTF-8" />
@@ -50,10 +50,10 @@
 					</div>
 				</div>
 				<div class="actionsSurOffre">
-					<div class="postuler">
+					<div class="postuler" sec:authorize="hasRole('ROLE_USER')">
 						<a th:href="@{postuler(id=${o.id})}">Postuler</a>
 					</div>
-					<div class="supprimerOffre">
+					<div class="supprimerOffre" sec:authorize="hasRole('ROLE_ADMIN')">
 						<a th:href="@{delete(id=${o.id})}">
 							<img th:src="@{/images/trash.png}" src="trash.png" alt="supprimer">
 						</a>
