@@ -24,10 +24,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class OffreStageController {
     @Autowired
     private OffreStageRepository dao;
-    
+
     @Autowired
     private EntrepriseRepository dao2;
-    
+
     @Autowired
     private EtudiantRepository dao3;
 
@@ -71,7 +71,7 @@ public class OffreStageController {
             // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
             message = "L'offre '" + offreStage.getTitre() + "' a été correctement enregistrée";
         } catch (DataIntegrityViolationException e) {
-            // Les noms sont définis comme 'UNIQUE' 
+            // Les noms sont définis comme 'UNIQUE'
             // En cas de doublon, JPA lève une exception de violation de contrainte d'intégrité
             message = "Erreur : L'offre '" + offreStage.getTitre() + "' existe déjà";
         }
@@ -79,7 +79,7 @@ public class OffreStageController {
         // Ici on transmet un message de succès ou d'erreur
         // Ce message est accessible et affiché dans la vue 'afficheGalerie.html'
         redirectInfo.addFlashAttribute("message", message);
-        return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
+        return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste
     }
 
     /**
@@ -94,7 +94,7 @@ public class OffreStageController {
     public String supprimeUneOffrePuisMontreLaListe(@RequestParam("id") OffreStage offreStage, RedirectAttributes redirectInfo) {
         String message = "L'offre '" + offreStage.getTitre() + "' a bien été supprimée";
         try {
-            dao.delete(offreStage); // Ici on peut avoir une erreur 
+            dao.delete(offreStage); // Ici on peut avoir une erreur
         } catch (DataIntegrityViolationException e) {
             // violation de contrainte d'intégrité si on essaie de supprimer une offre de stage
             message = "Erreur : Impossible de supprimer l'offre '" + offreStage.getTitre() + "'";
@@ -105,7 +105,7 @@ public class OffreStageController {
         redirectInfo.addFlashAttribute("message", message);
         return "redirect:show"; // on se redirige vers l'affichage de la liste
     }
-    
+
     /**
      * Appelé par le lien 'postuler' dans 'OffreStage.html', méthode POST
      *
