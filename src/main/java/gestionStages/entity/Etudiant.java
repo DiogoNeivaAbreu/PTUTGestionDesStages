@@ -12,22 +12,22 @@ public class Etudiant extends Utilisateur{
 
     //@NonNull
     private String anneeEtude;
-    
+
     @ManyToMany(mappedBy= "candidats")
     @ToString.Exclude
     private List<OffreStage> listeOffres = new LinkedList<>();
-    
-    @ManyToOne 
+
+    @ManyToOne
     Ecole univ;
-    
+
     @OneToOne
     private Stage stageEtudiant;
-    
+
     public void postulerOffre(OffreStage offreStage) {
         listeOffres.add(offreStage);
     }
-    
+
     public void AjouterDesDocuments(Administratif documents){
-        // TODO 
+        // TODO
     }
 }

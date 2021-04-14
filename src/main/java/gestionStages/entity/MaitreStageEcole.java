@@ -9,7 +9,7 @@ public class MaitreStageEcole extends Utilisateur{
 
     //@NonNull
     private String matiereEnseignee;
-    
+
     @ManyToOne
     Ecole ecole;
 }

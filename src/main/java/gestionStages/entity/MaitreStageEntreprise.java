@@ -6,10 +6,10 @@ import lombok.*;
 @Getter @Setter @NoArgsConstructor @ToString
 @Entity
 public class MaitreStageEntreprise extends Utilisateur{
-    
+
     //@NonNull
     private String poste;
-    
+
     @ManyToOne
     Entreprise entreprise;
 }

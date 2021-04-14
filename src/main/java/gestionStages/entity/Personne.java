@@ -8,21 +8,21 @@ import lombok.*;
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 @Entity // Une entité JPA
 public class Personne {
-    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NonNull
     private String nom;
-    
+
     @NonNull
     private String prenom;
-   
+
     @NonNull
     private String adresse;
-    
+
     @NonNull
     private String telephone;
-    
+
     @Email
     private String email;
 }

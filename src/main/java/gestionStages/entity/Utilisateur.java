@@ -31,15 +31,15 @@ public class Utilisateur implements UserDetails {
 
     @NonNull // Lombok
     private String password;
-    
+
     @NonNull
     private String nom;
-    
+
     @NonNull
     private String prenom;
-   
+
     private String adresse;
-    
+
     private String telephone;
 
     @NonNull // Lombok
