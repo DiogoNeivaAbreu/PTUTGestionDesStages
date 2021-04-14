@@ -48,18 +48,18 @@ public class UserServiceImpl implements UserService {
         user.getRoles().add(normal);
         userRepository.save(user);
     }
-/*
-    @Override
-    public void saveEntreprise(Entreprise entreprise) {
-        // Par défaut on attribue le rôle 'ROLE_ENTREPRISE' aux nouvelles entreprises
-        // Ce rôle est créé automatiquement au lancement de l'application
-        Role uneEntreprise = roleRepository.findByName("ROLE_ENTREPRISE").orElseThrow();
-        // On crypte le mot de passe avant de l'enregistrer
-        entreprise.setPassword(bCryptPasswordEncoder.encode(entreprise.getPassword()));
-        entreprise.getRoles().add(uneEntreprise);
-        entrepriseRepository.save(entreprise);
-    }
-*/
+    /*
+        @Override
+        public void saveEntreprise(Entreprise entreprise) {
+            // Par défaut on attribue le rôle 'ROLE_ENTREPRISE' aux nouvelles entreprises
+            // Ce rôle est créé automatiquement au lancement de l'application
+            Role uneEntreprise = roleRepository.findByName("ROLE_ENTREPRISE").orElseThrow();
+            // On crypte le mot de passe avant de l'enregistrer
+            entreprise.setPassword(bCryptPasswordEncoder.encode(entreprise.getPassword()));
+            entreprise.getRoles().add(uneEntreprise);
+            entrepriseRepository.save(entreprise);
+        }
+    */
     @Override
     public Utilisateur findByUserName(String username) {
         return userRepository.findByUsername(username);
