@@ -53,7 +53,7 @@ Le contrôleur transmet deux informations à cette vue :
 					<p th:text="${o.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mollis nunc eget ligula feugiat, ornare lobortis nisi tempor. Sed odio enim, congue sed venenatis nec, egestas quis turpis. Sed et felis lacus. Aenean faucibus dolor eu sem vestibulum consequat. Nullam accumsan eleifend purus, sed tincidunt nunc gravida non. Morbi vel mattis tortor, sed aliquet massa. Vivamus mollis, augue gravida blandit vehicula, nibh est euismod odio, eu laoreet neque est nec lacus. Sed pharetra euismod nulla non pellentesque. </p>
 				</div>
                                 <a th:href="@{delete(id=${o.id})}">Supprimer l'offre</a>
-                                <div class="postulerOffre">
+                                <div sec:authorize="hasRole('ROLE_USER')" class="postulerOffre">
                                     <a th:href="@{postuler(id=${o.id})}">Postuler</a>
                                 </div>
 			</div>

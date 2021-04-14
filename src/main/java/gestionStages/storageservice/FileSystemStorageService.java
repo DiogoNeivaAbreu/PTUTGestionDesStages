@@ -8,10 +8,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
-import gestionStages.storageservice.StorageException;
-import gestionStages.storageservice.StorageFileNotFoundException;
-import gestionStages.storageservice.StorageProperties;
-import gestionStages.storageservice.StorageService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;

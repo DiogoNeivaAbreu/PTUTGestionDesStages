@@ -1,4 +1,4 @@
-package gestionStages.controller;
+package gestionStages;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

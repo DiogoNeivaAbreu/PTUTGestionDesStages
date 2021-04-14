@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
             roleRepository.save(roleAdmin);
             roleRepository.save(roleUser);
             roleRepository.save(roleEntreprise);
-            Utilisateur firstAdmin = new Utilisateur(adminLogin, adminPassword, adminEmail, adminNom, adminPrenom);
+            Utilisateur firstAdmin = new Utilisateur(adminLogin, adminPassword, adminEmail/*, adminNom, adminPrenom*/);
             // On crypte le mot de passe avant de l'enregistrer
             firstAdmin.setPassword(bCryptPasswordEncoder.encode(firstAdmin.getPassword()));
             firstAdmin.getRoles().add(roleAdmin);

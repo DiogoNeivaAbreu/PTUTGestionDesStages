@@ -3,7 +3,9 @@ package gestionStages.controller;
 import gestionStages.dao.EntrepriseRepository;
 import gestionStages.dao.EtudiantRepository;
 import gestionStages.dao.OffreStageRepository;
+import gestionStages.entity.Etudiant;
 import gestionStages.entity.OffreStage;
+import gestionStages.entity.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -28,8 +31,6 @@ public class OffreStageController {
     @Autowired
     private EntrepriseRepository dao2;
     
-    @Autowired
-    private EtudiantRepository dao3;
 
     /**
      * Affiche toutes les offres de stage dans la base
@@ -106,20 +107,20 @@ public class OffreStageController {
         return "redirect:show"; // on se redirige vers l'affichage de la liste
     }
     
-    /**
-     * Appelé par le lien 'postuler' dans 'OffreStage.html', méthode POST
-     *
-     * @param offreStage à partir de l'id de l'offre de stage transmis en paramètre, Spring fera une requête SQL SELECT pour
-     * chercher la galerie dans la base
-     * @param redirectInfo pour transmettre des paramètres lors de la redirection
-     * @return une redirection vers l'affichage de la liste des offres
-     */
+//    /**
+//     * Appelé par le lien 'postuler' dans 'OffreStage.html', méthode POST
+//     *
+//     * @param offreStage à partir de l'id de l'offre de stage transmis en paramètre, Spring fera une requête SQL SELECT pour
+//     * chercher la galerie dans la base
+//     * @param redirectInfo pour transmettre des paramètres lors de la redirection
+//     * @return une redirection vers l'affichage de la liste des offres
+//     */
 //    @PostMapping(path = "postuler")
-//    public String postuleOffrePuisMontreLaListe(@RequestParam("id") OffreStage offreStage, RedirectAttributes redirectInfo) {
+//    public String postuleOffrePuisMontreLaListe(@RequestParam("id") OffreStage offreStage, @AuthenticationPrincipal Etudiant etudiant, Model model, RedirectAttributes redirectInfo) {
 //        String message;
 //        try {
 //            // cf. https://www.baeldung.com/spring-data-crud-repository-save
-//            dao3.
+//            dao.postulerOffre(etudiant, offreStage);
 //            // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
 //            message = "Vous avez postulé à " + offreStage.getTitre() ;
 //        } catch (DataIntegrityViolationException e) {

@@ -10,7 +10,10 @@ import lombok.*;
 @Entity // Une entité JPA
 public class Etudiant extends Utilisateur{
 
-    //@NonNull
+    @NonNull
+    private String prenom;
+    
+    @NonNull
     private String anneeEtude;
     
     @ManyToMany(mappedBy= "candidats")

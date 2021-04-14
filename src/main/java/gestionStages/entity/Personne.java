@@ -16,9 +16,6 @@ public class Personne {
     
     @NonNull
     private String prenom;
-   
-    @NonNull
-    private String adresse;
     
     @NonNull
     private String telephone;

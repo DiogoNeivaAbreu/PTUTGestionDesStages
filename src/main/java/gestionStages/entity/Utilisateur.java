@@ -28,19 +28,15 @@ public class Utilisateur implements UserDetails {
     // Contraintes de taille
     @Size(min = 6, max = 32)
     private String username;
+    
+    //@NonNull
+    private String nom;
+    
+    //@NonNull
+    private String telephone;
 
     @NonNull // Lombok
     private String password;
-    
-    @NonNull
-    private String nom;
-    
-    @NonNull
-    private String prenom;
-   
-    private String adresse;
-    
-    private String telephone;
 
     @NonNull // Lombok
     //@Email // Doit avoir la forme d'une adresse email
