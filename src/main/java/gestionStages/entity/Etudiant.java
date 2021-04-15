@@ -30,7 +30,7 @@ public class Etudiant extends Utilisateur{
         listeOffres.add(offreStage);
     }
 
-    public void AjouterDesDocuments(Administratif documents){
+    public void AjouterDesDocuments(Administration documents){
         // TODO
     }
 }

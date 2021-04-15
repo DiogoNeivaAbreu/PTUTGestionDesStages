@@ -2,6 +2,7 @@ package gestionStages.service;
 
 import gestionStages.dao.EntrepriseRepository;
 import gestionStages.entity.Entreprise;
+import gestionStages.entity.Administration;
 import lombok.extern.slf4j.Slf4j;
 import gestionStages.dao.RoleRepository;
 import gestionStages.dao.UserRepository;
@@ -75,7 +76,7 @@ public class UserServiceImpl implements UserService {
             roleRepository.save(roleAdmin);
             roleRepository.save(roleUser);
             roleRepository.save(roleEntreprise);
-            Utilisateur firstAdmin = new Utilisateur(adminLogin, adminPassword, adminEmail, adminNom);
+            Administration firstAdmin = new Administration(adminLogin, adminPassword, adminEmail);
             // On crypte le mot de passe avant de l'enregistrer
             firstAdmin.setPassword(bCryptPasswordEncoder.encode(firstAdmin.getPassword()));
             firstAdmin.getRoles().add(roleAdmin);

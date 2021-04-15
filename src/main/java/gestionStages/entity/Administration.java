@@ -7,10 +7,14 @@ import lombok.*;
 
 @Getter @Setter @NoArgsConstructor @ToString
 @Entity
-public class Administratif {
+public class Administration extends Utilisateur{
     
-    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Integer id;
+    @NonNull
+    private String prenom;
+    
+    public Administration(String username, String password, String email){
+        super(username, password, email);
+    }
     
 //    public List<String> documentsStage = new LinkedList<>();
     
