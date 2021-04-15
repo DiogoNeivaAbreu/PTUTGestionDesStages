@@ -12,25 +12,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 @Entity
-public class Entreprise {
-    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @Column(unique=true)
-    @NonNull
-    private String nom;
-
-    @NonNull
-    private String adresse;
-
-    @NonNull
-    private String telephone;
-
-    @Email
-    private String email;
-
-    @NonNull
-    private String password;
+public class Entreprise extends Utilisateur{
 
     @NonNull
     private String secteur;

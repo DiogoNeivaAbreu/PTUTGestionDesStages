@@ -3,6 +3,7 @@ package gestionStages.controller;
 import gestionStages.dao.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import gestionStages.entity.Utilisateur;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping(path = "/user")
 @Secured({"ROLE_ADMIN", "ROLE_USER"}) // Réservé aux utilisateurs qui ont le rôle 'ROLE_USER' ou 'ROLE_ADMIN'
 public class UserController {
+    @Autowired
     private UserRepository dao;
 
     @GetMapping(path = "pageUser")

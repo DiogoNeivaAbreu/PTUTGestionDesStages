@@ -10,6 +10,9 @@ import lombok.*;
 @Entity // Une entité JPA
 public class Etudiant extends Utilisateur{
 
+    @NonNull
+    private String prenom;
+
     //@NonNull
     private String anneeEtude;
 

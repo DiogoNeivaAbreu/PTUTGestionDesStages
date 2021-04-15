@@ -25,8 +25,7 @@ public class Utilisateur implements UserDetails {
     private Integer id;
 
     @NonNull // Lombok
-    // Contraintes de taille
-    @Size(min = 6, max = 32)
+    @Size(min = 6, max = 32) // Contraintes de taille
     private String username;
 
     @NonNull // Lombok
@@ -34,9 +33,6 @@ public class Utilisateur implements UserDetails {
 
     @NonNull
     private String nom;
-
-    @NonNull
-    private String prenom;
 
     private String adresse;
 

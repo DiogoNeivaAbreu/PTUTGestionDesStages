@@ -55,10 +55,10 @@
     <div class="container">
         <div class="tousLesEtudiants">
             <table>
-                <tr th:each="p: ${personne}">
-                    <td th:text="${p.nom}">Nom</td>
-                    <td th:text="${p.prenom}">Prenom</td>
-                    <td th:text="${p.telephone}">06 60 66 00 06</td>
+                <tr th:each="e: ${etudiants}">
+                    <td th:text="${e.nom}">Nom</td>
+                    <td th:text="${e.prenom}">Prenom</td>
+                    <td th:text="${e.telephone}">06 60 66 00 06</td>
                 </tr>
             </table>
         </div>
