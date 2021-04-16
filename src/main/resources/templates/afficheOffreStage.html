@@ -49,6 +49,18 @@
 						<p th:text="${o.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mollis nunc eget ligula feugiat, ornare lobortis nisi tempor. Sed odio enim, congue sed venenatis nec, egestas quis turpis. Sed et felis lacus. Aenean faucibus dolor eu sem vestibulum consequat.</p>
 					</div>
 				</div>
+                                <!--<div sec:authorize="hasRole('ROLE_USER')">
+                                    <p th:text="${o.etatOffre}">Etat de l'offre</p>
+                                    <div>
+                                        <label for="etatOffre">Etat de l'offre</label>
+                                        <select name="etatOffre" id="etatOffre">
+                                            <option value="1" th:text="${o.etatOffre.ENATTENTEDEVALIDATIONADMIN}"></option>
+                                            <option value="2" th:text="${o.etatOffre.ACCEPTEE}"></option>
+                                            <option value="3" th:text="${o.etatOffre.REFUSEE}"></option>
+                                            <option value="4" th:text="${o.etatOffre.LIBRE}"></option>
+                                        </select>
+                                    </div>
+                                </div>-->
 				<div class="actionsSurOffre">
 					<div class="postuler" sec:authorize="hasRole('ROLE_USER')">
 						<a th:href="@{postuler(id=${o.id})}">Postuler</a>
