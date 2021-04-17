@@ -1,7 +1,5 @@
 package gestionStages.storageservice;
 
-import gestionStages.storageservice.StorageException;
-
 public class StorageFileNotFoundException extends StorageException {
 
 	public StorageFileNotFoundException(String message) {

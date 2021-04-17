@@ -15,9 +15,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@EnableConfigurationProperties(StorageProperties.class)
 @EnableWebSecurity // Autorise les annotations de sécurité sur les contrôleurs
 @EnableGlobalMethodSecurity(securedEnabled = true)
-@EnableConfigurationProperties(StorageProperties.class)
 @Slf4j
 public class WebApplication {
     final
@@ -36,13 +36,13 @@ public class WebApplication {
     private void initialize() {
         userService.initializeRolesAndAdmin();
     }
-    
+
     @Bean
-	CommandLineRunner init(StorageService storageService) {
-		return (args) -> {
-			storageService.deleteAll();
-			storageService.init();
-		};
-	}
+    CommandLineRunner init(StorageService storageService) {
+        return (args) -> {
+            storageService.deleteAll();
+            storageService.init();
+        };
+    }
 
 }

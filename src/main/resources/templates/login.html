@@ -21,7 +21,7 @@
                     <label for="motDePasse">Mot de passe</label>
                     <input id="motDePasse" name="password" type="password"/>
                     <span th:text="${error}">Message d'erreur</span>
-                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
                     <input type="submit" value="Connexion"/>
 
                     </hr>

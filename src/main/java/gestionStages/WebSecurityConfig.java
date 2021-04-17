@@ -11,6 +11,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
+import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+import org.springframework.web.multipart.support.MultipartFilter;
+
+import javax.servlet.ServletContext;
 
 @Configuration
 @EnableWebSecurity
@@ -21,10 +26,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.userDetailsService = userDetailsService;
     }
 
+    @Autowired
+    private Http403ForbiddenEntryPoint forbiddenEntryPoint;
+
+    @Bean
+    public Http403ForbiddenEntryPoint forbiddenEntryPoint() {
+        return new Http403ForbiddenEntryPoint();
+    }
+
+
+
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -33,6 +49,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // La console h2 est réservée à l'administrateur
         http.authorizeRequests().antMatchers("/h2-console/**").hasRole("ADMIN").and().csrf()
                 .ignoringAntMatchers("/h2-console/**").and().headers().frameOptions().sameOrigin();
+        http.antMatcher("/login")
+                .authorizeRequests()
+                .anyRequest().fullyAuthenticated()
+                .and()
+                .httpBasic()
+                .authenticationEntryPoint(forbiddenEntryPoint)
+                .and()
+                .csrf().disable();
     }
 
     @Bean
