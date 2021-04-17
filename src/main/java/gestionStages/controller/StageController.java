@@ -39,8 +39,8 @@ public class StageController {
      */
     @GetMapping(path = "show")
     public String afficheToutesLesOffresDeStage(Model model) {
-        model.addAttribute("stage", dao.findAll());
-        return "afficheStage";
+        model.addAttribute("stages", dao.findAll());
+        return "tousLesStages";
     }
 
     /**
@@ -50,7 +50,7 @@ public class StageController {
      * @return le nom de la vue à afficher ('formulaireStage.html')
      */
     @GetMapping(path = "add")
-    public String montreLeFormulairePourAjout(@ModelAttribute("stage") Stage stage, Model model) {
+    public String montreLeFormulairePourAjout(@ModelAttribute("stages") Stage stage, Model model) {
         model.addAttribute("entreprises", dao2.findAll());
         model.addAttribute("etudiants", dao3.findAll());
         model.addAttribute("offreStage", dao4.findAll());

@@ -23,7 +23,7 @@ public class Etudiant extends Utilisateur{
     @ManyToOne
     Ecole univ;
 
-    @OneToOne
+    @OneToOne(mappedBy="stagiaire")
     private Stage stageEtudiant;
 
     public void postulerOffre(OffreStage offreStage) {

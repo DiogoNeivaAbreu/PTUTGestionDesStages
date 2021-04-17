@@ -86,7 +86,7 @@ public class OffreStageController {
      * Appelé par le lien 'Supprimer' dans 'afficheOffreStage.html'
      *
      * @param offreStage à partir de l'id de l'offre de stage transmis en paramètre, Spring fera une requête SQL SELECT pour
-     * chercher la galerie dans la base
+     * chercher l'offre dans la base
      * @param redirectInfo pour transmettre des paramètres lors de la redirection
      * @return une redirection vers l'affichage de la liste des offres
      */

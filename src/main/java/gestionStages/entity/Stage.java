@@ -27,9 +27,9 @@ public class Stage {
     @OneToOne(mappedBy = "stage")
     private OffreStage offre;
     
-    @OneToOne(mappedBy = "stageEtudiant")
+    @OneToOne
     private Etudiant stagiaire;
     
-    @ManyToOne
+    @OneToOne
     Entreprise entrepriseAccueil;
 }

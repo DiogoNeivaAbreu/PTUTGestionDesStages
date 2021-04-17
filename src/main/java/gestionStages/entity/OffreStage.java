@@ -35,6 +35,7 @@ public class OffreStage {
     //@NonNull
     private String lettreMotivation;
     
+    //@NonNull
     private EtatOffreStage etatOffre;
     
     @ManyToMany
