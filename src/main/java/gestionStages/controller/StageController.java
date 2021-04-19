@@ -4,6 +4,8 @@ import gestionStages.dao.EntrepriseRepository;
 import gestionStages.dao.EtudiantRepository;
 import gestionStages.dao.OffreStageRepository;
 import gestionStages.dao.StageRepository;
+import gestionStages.entity.EtatOffreStage;
+import gestionStages.entity.OffreStage;
 import gestionStages.entity.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -65,11 +67,18 @@ public class StageController {
      * @return une redirection vers l'affichage de la liste des stages
      */
     @PostMapping(path = "save")
-    public String ajouteOffrePuisMontreLaListe(Stage stage, RedirectAttributes redirectInfo) {
+    public String ajouteStagePuisMontreLaListe(Stage stage, OffreStage offreStage, EtatOffreStage etatOffre, RedirectAttributes redirectInfo) {
         String message;
         try {
             // cf. https://www.baeldung.com/spring-data-crud-repository-save
-            dao.save(stage);
+            if(offreStage.getEtatOffre()== etatOffre.VALIDEE){
+                stage.setTitre(offreStage.getTitre());
+                stage.setDescription(offreStage.getDescription());
+                stage.setDateDebut(offreStage.getDateDebut());
+                stage.setDateFin(offreStage.getDateFin());
+                stage.setEntrepriseAccueil(offreStage.getProposeur());
+                dao.save(stage);
+            }
             // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
             message = "Le stage '" + stage.getTitre() + "' a été correctement enregistrée";
         } catch (DataIntegrityViolationException e) {

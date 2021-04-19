@@ -25,7 +25,7 @@
 <section id="ajouterUneOffre">
     <div class="containerForm">
         <div class="ajouterUneOffre">
-            <form th:object="${offreStage}" method="POST" th:action="@{save}">
+            <form th:object="${offreStage}" method="PATCH" th:action="@{modif/{id}}">
                 <div class="row">
                     <label for="entreprise">Entreprise:</label>
                     <select id="entreprise" name="entreprise">

@@ -24,7 +24,7 @@ public class Stage {
     
     private EtatStage etatStage;
     
-    @OneToOne(mappedBy = "stage")
+    @OneToOne
     private OffreStage offre;
     
     @OneToOne

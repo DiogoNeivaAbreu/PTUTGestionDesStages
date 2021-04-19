@@ -42,9 +42,9 @@ public class OffreStage {
     List<Etudiant> candidats = new LinkedList<>();
     
     @ManyToOne
-    Entreprise proposeur;
+    private Entreprise proposeur;
     
-    @OneToOne
+    @OneToOne(mappedBy="offre")
     private Stage stage;
     
 }

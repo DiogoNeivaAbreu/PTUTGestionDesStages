@@ -3,7 +3,11 @@ package gestionStages.controller;
 import gestionStages.dao.EntrepriseRepository;
 import gestionStages.dao.EtudiantRepository;
 import gestionStages.dao.OffreStageRepository;
+import gestionStages.dao.StageRepository;
+import gestionStages.entity.EtatOffreStage;
+import gestionStages.entity.Etudiant;
 import gestionStages.entity.OffreStage;
+import gestionStages.entity.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
@@ -30,6 +38,9 @@ public class OffreStageController {
 
     @Autowired
     private EtudiantRepository dao3;
+    
+    @Autowired
+    private StageRepository dao4;
 
     /**
      * Affiche toutes les offres de stage dans la base
@@ -63,11 +74,19 @@ public class OffreStageController {
      * @return une redirection vers l'affichage de la liste des offres
      */
     @PostMapping(path = "save")
-    public String ajouteOffrePuisMontreLaListe(OffreStage offreStage, RedirectAttributes redirectInfo) {
+    public String ajouteOffrePuisMontreLaListe(OffreStage offreStage, Stage stage, EtatOffreStage etatOffre, RedirectAttributes redirectInfo) {
         String message;
         try {
             // cf. https://www.baeldung.com/spring-data-crud-repository-save
             dao.save(offreStage);
+            if(offreStage.getEtatOffre()== etatOffre.VALIDEE){
+                stage.setTitre(offreStage.getTitre());
+                stage.setDescription(offreStage.getDescription());
+                stage.setDateDebut(offreStage.getDateDebut());
+                stage.setDateFin(offreStage.getDateFin());
+                stage.setEntrepriseAccueil(offreStage.getProposeur());
+                dao4.save(stage);
+            }
             // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
             message = "L'offre '" + offreStage.getTitre() + "' a été correctement enregistrée";
         } catch (DataIntegrityViolationException e) {
@@ -80,6 +99,29 @@ public class OffreStageController {
         // Ce message est accessible et affiché dans la vue 'afficheGalerie.html'
         redirectInfo.addFlashAttribute("message", message);
         return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste
+    }
+    
+    @GetMapping(path="modif/{id}")
+    OffreStage one(@PathVariable Integer id) throws NotFoundException {
+    
+        return dao.findById(id)
+            .orElseThrow(() -> new NotFoundException());
+  }
+    
+    @PutMapping(path="modif/{id}")
+    OffreStage modifOffre(@RequestBody OffreStage newOffre, @PathVariable Integer id) {
+
+      return dao.findById(id)
+        .map(offre -> {
+          offre.setTitre(newOffre.getTitre());
+          offre.setDescription(newOffre.getDescription());
+          offre.setEtatOffre(newOffre.getEtatOffre());
+          return dao.save(offre);
+        })
+        .orElseGet(() -> {
+          newOffre.setId(id);
+          return dao.save(newOffre);
+        });
     }
 
     /**
@@ -114,23 +156,23 @@ public class OffreStageController {
      * @param redirectInfo pour transmettre des paramètres lors de la redirection
      * @return une redirection vers l'affichage de la liste des offres
      */
-//    @PostMapping(path = "postuler")
-//    public String postuleOffrePuisMontreLaListe(@RequestParam("id") OffreStage offreStage, RedirectAttributes redirectInfo) {
-//        String message;
-//        try {
-//            // cf. https://www.baeldung.com/spring-data-crud-repository-save
-//            dao3.
-//            // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
-//            message = "Vous avez postulé à " + offreStage.getTitre() ;
-//        } catch (DataIntegrityViolationException e) {
-//            // Les noms sont définis comme 'UNIQUE' 
-//            // En cas de doublon, JPA lève une exception de violation de contrainte d'intégrité
-//            message = "Erreur : Vous avez déjà postuler à cette offre";
-//        }
-//        // RedirectAttributes permet de transmettre des informations lors d'une redirection,
-//        // Ici on transmet un message de succès ou d'erreur
-//        // Ce message est accessible et affiché dans la vue 'afficheGalerie.html'
-//        redirectInfo.addFlashAttribute("message", message);
-//        return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
-//    }
+    @PostMapping(path = "postuler")
+    public String postuleOffrePuisMontreLaListe(@RequestParam("id") OffreStage offreStage, @RequestParam("id") Etudiant etudiant, RedirectAttributes redirectInfo) {
+        String message;
+        try {
+            // cf. https://www.baeldung.com/spring-data-crud-repository-save
+            dao.postulerOffre(etudiant, offreStage);
+            // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
+            message = "Vous avez postulé à " + offreStage.getTitre() ;
+        } catch (DataIntegrityViolationException e) {
+            // Les noms sont définis comme 'UNIQUE' 
+            // En cas de doublon, JPA lève une exception de violation de contrainte d'intégrité
+            message = "Erreur : Vous avez déjà postuler à cette offre";
+        }
+        // RedirectAttributes permet de transmettre des informations lors d'une redirection,
+        // Ici on transmet un message de succès ou d'erreur
+        // Ce message est accessible et affiché dans la vue 'afficheGalerie.html'
+        redirectInfo.addFlashAttribute("message", message);
+        return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
+    }
 }
