@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <section id="header" th:insert="fragments/header :: header">Header</section>
@@ -13,29 +14,36 @@
         <div class="titre">
             <h1>Envoyer un fichier en ligne</h1>
         </div>
+        <div th:if="${message}">
+            <p th:text="${message}">Message</p>
+        </div>
     </div>
 </section>
 
-<div th:if="${message}">
-    <h2 th:text="${message}"/>
-</div>
+<section id="formulaireUploadFichier">
+    <div class="container">
+        <div class="formulaireUploadFichier">
+            <form method="POST" enctype="multipart/form-data" th:action="@{/upload}">
+                <label for="fileToUpload">Choisissez un fichier à mettre en ligne</label>
+                <input type="file" name="file" id="fileToUpload"/>
+                <input type="submit" value="Upload" />
+            </form>
+        </div>
+    </div>
+</section>
 
-<div>
-    <form method="POST" enctype="multipart/form-data" action="/upload">
-        <table>
-            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-        </table>
-    </form>
-</div>
-
-<div>
-    <ul>
-        <li th:each="file : ${files}">
-            <a th:href="${file}" th:text="${file}" />
-        </li>
-    </ul>
-</div>
-
+<section id="fichiersEnLigne">
+    <div class="container">
+        <div class="fichiersEnLigne">
+            <h2>Les fichiers déjà uploadés</h2>
+            <ul>
+                <li th:each="file : ${files}">
+                    <a th:href="${file}" th:text="${file}"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
 </body>
 </html>
+

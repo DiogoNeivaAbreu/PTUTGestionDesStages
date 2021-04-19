@@ -1,38 +1,39 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>    <title>Créer un compte</title>
 </head>
 <body>
+<section id="header" th:insert="fragments/header :: header">Header</section>
 <section id="formulaireCreerUnCompte">
     <div class="formulaireCreerUnCompte">
         <form method="POST" th:object="${userForm}" th:action="@{/etudiant/creerUnCompte}">
             <div style="width: 45%" th:classappend="${#fields.hasErrors('username') ? 'has-error' : ''}">
                 <label for="nom">Nom</label>
-                <input id="nom" type="text" name="nom" th:field="*{nom}"/>
+                <input id="nom" type="text" name="nom" th:field="*{nom}" required="required"/>
             </div>
             <div style="width: 45%">
                 <label for="prenom">Prénom</label>
-                <input id="prenom" type="text" name="prenom" th:field="*{prenom}"/>
+                <input id="prenom" type="text" name="prenom" th:field="*{prenom}" required="required">
             </div>
             <div style="width: 45%">
                 <label for="username">Nom d'utilisateur</label>
-                <input id="username" type="text" name="username" th:field="*{username}"/>
+                <input id="username" type="text" name="username" th:field="*{username}" required="required"/>
                 <ul><li th:errors="*{username}">Erreur sur le prénom</li></ul>
             </div>
             <div style="width: 45%">
                 <label for="adresse">Adresse</label>
-                <input id="adresse" type="text" name="adresse" th:field="*{adresse}"/>
+                <input id="adresse" type="text" name="adresse" th:field="*{adresse}" required="required"/>
             </div>
             <div style="width: 45%">
                 <label for="telephone">Numéro de téléphone</label>
-                <input id="telephone" type="text" name="telephone" th:field="*{telephone}"/>
+                <input id="telephone" type="text" name="telephone" th:field="*{telephone}" required="required"/>
             </div>
             <div style="width: 45%">
                 <label for="anneeEtude">Année d'étude</label>
-                <select name="anneeEtude" id="anneeEtude" th:field="*{anneeEtude}">
+                <select name="anneeEtude" id="anneeEtude" th:field="*{anneeEtude}" required="required">
                     <option value="1">1ère année</option>
                     <option value="2">2e année</option>
                     <option value="3">3e année</option>
@@ -42,21 +43,28 @@
             </div>
             <div style="width: 100%" th:classappend="${#fields.hasErrors('email') ? 'has-error' : ''}">
                 <label for="mail">Adresse e-mail</label>
-                <input id="mail" type="email" name="mail" th:field="*{email}"/>
+                <input id="mail" type="email" name="mail" th:field="*{email}" required="required"/>
                 <ul><li th:errors="*{email}">Erreur sur le mail</li></ul>
             </div>
             <div style="width: 100%" th:classappend="${#fields.hasErrors('password') ? 'has-error' : ''}">
                 <label for="motDePasse">Mot de passe</label>
-                <input id="motDePasse" type="password" name="motDePasse" th:field="*{password}"/>
+                <input id="motDePasse" type="password" name="motDePasse" th:field="*{password}" required="required"/>
                 <ul><li th:errors="*{password}">Erreur sur le password</li></ul>
             </div>
             <div style="width: 100%" th:classappend="${#fields.hasErrors('passwordConfirm') ? 'has-error' : ''}">
                 <label for="motDePasse">Confirmer le votre mot de passe</label>
-                <input id="motDePasse" type="password" name="motDePasse" th:field="*{passwordConfirm}"/>
+                <input id="motDePasse" type="password" name="motDePasse" th:field="*{passwordConfirm}" required="required"/>
                 <ul><li th:errors="*{passwordConfirm}">Erreur confirmation password</li></ul>
             </div>
             <input type="submit" value="Créer un compte"/>
         </form>
+    </div>
+</section>
+<section id="creerUnCompteEntreprise">
+    <div class="container">
+        <div class="creerUnCompteEntreprise">
+
+        </div>
     </div>
 </section>
 </body>

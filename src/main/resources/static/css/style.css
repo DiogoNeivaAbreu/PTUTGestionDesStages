@@ -347,7 +347,8 @@ Login
 */
 section#formulaireLogin form,
 section#formulaireCreerUnCompte form,
-section#modifierProfil form{
+section#modifierProfil form,
+section#formulaireUploadFichier form{
 	width: 450px;
 	padding: 50px;
 	border-radius: 50px;
@@ -357,7 +358,8 @@ section#modifierProfil form{
 }
 
 section#formulaireCreerUnCompte form,
-section#modifierProfil form{
+section#modifierProfil form,
+section#formulaireUploadFichier form{
 	width: 600px;
 	display: flex;
 	justify-content: space-between;
@@ -471,4 +473,85 @@ section#tousLesEtudiants td{
 
 section#tousLesEtudiants td:first-child{
 	text-transform: uppercase;
+}
+
+/*
+------------------------------------------------
+------------------------------------------------
+Formulaire Upload Fichier
+------------------------------------------------
+------------------------------------------------
+*/
+
+section#formulaireUploadFichier input[type="file"]{
+	padding-left: 5%;
+}
+
+section#fichiersEnLigne{
+	margin-top: 50px;
+	color: #000055;
+	font-family: "Nunito Sans", sans-serif;
+}
+section#fichiersEnLigne ul{
+	list-style: none;
+}
+
+section#fichiersEnLigne a{
+	text-decoration: none;
+
+}
+
+/*
+------------------------------------------------
+------------------------------------------------
+Choix du type d'utilisateur
+-----------------------------------------------
+-----------------------------------------------
+*/
+section#choixUtilisateur div.choixUtilisateur{
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+
+	margin-top: 50vh;
+	transform: translateY(-50%);
+}
+
+section#choixUtilisateur h2{
+	width: 35%;
+	padding: 120px 10px;
+
+	color: #000055;
+	background-color: #E6E7ED;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Nunito Sans", sans-serif;
+	font-weight: 700;
+	font-size: 3.5em;
+	border-radius: 80px;
+
+	box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.75),
+	10px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+section#choixUtilisateur h2:hover{
+	box-shadow: inset -10px -10px 20px rgba(255, 255, 255, 0.75),
+	inset 10px 10px 20px rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+
+section#dejaUtilisateur{
+	margin-top: 150px;
+}
+
+section#dejaUtilisateur h2{
+	color: #000055;
+	text-align: center;
+	font-family: "Nunito Sans", sans-serif;
+	font-weight: 600;
+	font-size: 2em;
+}
+
+section#dejaUtilisateur a {
+	color: #000055;
 }

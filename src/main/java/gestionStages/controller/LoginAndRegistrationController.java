@@ -27,6 +27,11 @@ public class LoginAndRegistrationController {
         this.userValidator = userValidator;
     }
 
+    @GetMapping("choix")
+    public String registration(Model model) {
+        return "choixUtilisateur";
+    }
+
     /*@GetMapping("/creerUnCompte")
     public String registration(Model model) {
         model.addAttribute("userForm", new Utilisateur());
