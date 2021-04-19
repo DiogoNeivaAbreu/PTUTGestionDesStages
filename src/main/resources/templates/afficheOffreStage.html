@@ -62,7 +62,7 @@
                                     </div>
                                 </div>-->
 				<div class="actionsSurOffre">
-					<div class="postuler" sec:authorize="hasRole('ROLE_USER')">
+					<div class="postuler" sec:authorize="hasRole('ROLE_ETUDIANT')">
 						<a th:href="@{postuler(id=${o.id})}">Postuler</a>
 					</div>
 					<div class="supprimerOffre" sec:authorize="hasRole('ROLE_ADMIN')">

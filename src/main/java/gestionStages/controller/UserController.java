@@ -28,10 +28,4 @@ public class UserController {
         log.info("L'utilisateur id: {}, email: {} accède à sa page", user.getId(), user.getEmail());
         return "pageUser"; // On affiche la vue 'pageUser.html'
     }
-
-    @GetMapping(path = "modifierProfil")
-    public String modifierProfilUtilisateur(@AuthenticationPrincipal Utilisateur user, Model model){
-        log.info("L'utilisateur id: {}, email: {} accède à sa page", user.getId(), user.getEmail());
-        return "modifierProfil";
-    }
 }

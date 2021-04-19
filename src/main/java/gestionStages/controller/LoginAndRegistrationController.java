@@ -27,7 +27,7 @@ public class LoginAndRegistrationController {
         this.userValidator = userValidator;
     }
 
-    @GetMapping("/creerUnCompte")
+    /*@GetMapping("/creerUnCompte")
     public String registration(Model model) {
         model.addAttribute("userForm", new Utilisateur());
 
@@ -49,6 +49,7 @@ public class LoginAndRegistrationController {
         return "redirect:/";
     }
 
+*/
     @GetMapping("/login")
     public String login(Model model, String error, String logout) {
         if (error != null)

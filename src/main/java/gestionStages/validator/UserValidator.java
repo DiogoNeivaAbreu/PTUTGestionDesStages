@@ -1,5 +1,6 @@
 package gestionStages.validator;
 
+import gestionStages.entity.Etudiant;
 import gestionStages.entity.Utilisateur;
 import gestionStages.service.UserService;
 import org.springframework.stereotype.Component;
@@ -17,24 +18,24 @@ public class UserValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return Utilisateur.class.equals(aClass);
+        return Etudiant.class.equals(aClass);
     }
 
     @Override
     public void validate(Object o, Errors errors) {
-        Utilisateur user = (Utilisateur) o;
+        Etudiant etudiant = (Etudiant) o;
 
 
-        if (userService.findByUserName(user.getUsername()) != null) {
+        if (userService.findByUsername(etudiant.getUsername()) != null) {
             errors.rejectValue("username", "Duplicate.userForm.username");
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
-        if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
+        if (etudiant.getPassword().length() < 8 || etudiant.getPassword().length() > 32) {
             errors.rejectValue("password", "Size.userForm.password");
         }
 
-        if (!user.getPasswordConfirm().equals(user.getPassword())) {
+        if (!etudiant.getPasswordConfirm().equals(etudiant.getPassword())) {
             errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
         }
     }

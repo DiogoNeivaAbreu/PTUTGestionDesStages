@@ -1,13 +1,8 @@
 package gestionStages.service;
 
-import gestionStages.dao.EntrepriseRepository;
-import gestionStages.entity.Entreprise;
-import gestionStages.entity.Administration;
+import gestionStages.dao.*;
+import gestionStages.entity.*;
 import lombok.extern.slf4j.Slf4j;
-import gestionStages.dao.RoleRepository;
-import gestionStages.dao.UserRepository;
-import gestionStages.entity.Role;
-import gestionStages.entity.Utilisateur;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,8 +11,9 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final AdministrateurRepository administrateurRepository;
+    private final EtudiantRepository etudiantRepository;
     private final EntrepriseRepository entrepriseRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     // Login et Password de l'administrateur son définis dans 'application.properties'
@@ -32,14 +28,19 @@ public class UserServiceImpl implements UserService {
     @Value("${admin.prenom}")
     private String adminPrenom;
 
-    public UserServiceImpl(UserRepository userRepository, EntrepriseRepository entrepriseRepository,RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userRepository = userRepository;
+    public UserServiceImpl(EntrepriseRepository entrepriseRepository,
+                           AdministrateurRepository administrateurRepository,
+                           EtudiantRepository etudiantRepository,
+                           RoleRepository roleRepository,
+                           BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.entrepriseRepository = entrepriseRepository;
+        this.administrateurRepository =  administrateurRepository;
+        this.etudiantRepository = etudiantRepository;
         this.roleRepository = roleRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    @Override
+    /*@Override
     public void saveUser(Utilisateur user) {
         // Par défaut on attribue le rôle 'ROLE_USER' aux nouveaux utilisateurs
         // Ce rôle est créé automatiquement au lancement de l'application
@@ -48,6 +49,20 @@ public class UserServiceImpl implements UserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.getRoles().add(normal);
         userRepository.save(user);
+    }
+     */
+
+    @Override
+    public void saveEtudiant(Etudiant etudiant){
+        Role normal = roleRepository.findByName("ROLE_ETUDIANT").orElseThrow();
+        etudiant.setPassword(bCryptPasswordEncoder.encode(etudiant.getPassword()));
+        etudiant.getRoles().add(normal);
+        etudiantRepository.save(etudiant);
+    }
+
+    @Override
+    public Etudiant findByUsername(String username){
+        return etudiantRepository.findByUsername(username);
     }
     /*
         @Override
@@ -60,27 +75,28 @@ public class UserServiceImpl implements UserService {
             entreprise.getRoles().add(uneEntreprise);
             entrepriseRepository.save(entreprise);
         }
-    */
+
     @Override
     public Utilisateur findByUserName(String username) {
         return userRepository.findByUsername(username);
     }
+     */
 
     @Override
     public void initializeRolesAndAdmin() {
         if (roleRepository.findByName("ROLE_ADMIN").isEmpty()) {
-            log.info("Création des deux rôles et de l'administrateur");
+            log.info("Création des rôles et de l'administrateur");
             Role roleAdmin = new Role("ROLE_ADMIN");
-            Role roleUser = new Role("ROLE_USER");
+            Role roleEtudiant = new Role("ROLE_ETUDIANT");
             Role roleEntreprise = new Role("ROLE_ENTREPRISE");
             roleRepository.save(roleAdmin);
-            roleRepository.save(roleUser);
+            roleRepository.save(roleEtudiant);
             roleRepository.save(roleEntreprise);
-            Administration firstAdmin = new Administration(adminLogin, adminPassword, adminEmail);
+            Administration firstAdmin = new Administration(adminLogin, adminPassword, adminNom, adminEmail, adminPrenom);
             // On crypte le mot de passe avant de l'enregistrer
             firstAdmin.setPassword(bCryptPasswordEncoder.encode(firstAdmin.getPassword()));
             firstAdmin.getRoles().add(roleAdmin);
-            userRepository.save(firstAdmin);
+            administrateurRepository.save(firstAdmin);
         }
     }
 }
