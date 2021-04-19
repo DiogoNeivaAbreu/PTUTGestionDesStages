@@ -3,20 +3,17 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>    <title>Créer un compte</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>
+    <title>Créer un compte</title>
 </head>
 <body>
 <section id="header" th:insert="fragments/header :: header">Header</section>
 <section id="formulaireCreerUnCompte">
     <div class="formulaireCreerUnCompte">
-        <form method="POST" th:object="${userForm}" th:action="@{/etudiant/creerUnCompte}">
+        <form method="POST" th:object="${userForm}" th:action="@{/entreprise/creerUnCompte}">
             <div style="width: 45%" th:classappend="${#fields.hasErrors('username') ? 'has-error' : ''}">
                 <label for="nom">Nom</label>
                 <input id="nom" type="text" name="nom" th:field="*{nom}" required="required"/>
-            </div>
-            <div style="width: 45%">
-                <label for="prenom">Prénom</label>
-                <input id="prenom" type="text" name="prenom" th:field="*{prenom}" required="required">
             </div>
             <div style="width: 45%">
                 <label for="username">Nom d'utilisateur</label>
@@ -31,15 +28,9 @@
                 <label for="telephone">Numéro de téléphone</label>
                 <input id="telephone" type="text" name="telephone" th:field="*{telephone}" required="required"/>
             </div>
-            <div style="width: 45%">
-                <label for="anneeEtude">Année d'étude</label>
-                <select name="anneeEtude" id="anneeEtude" th:field="*{anneeEtude}" required="required">
-                    <option value="1">1ère année</option>
-                    <option value="2">2e année</option>
-                    <option value="3">3e année</option>
-                    <option value="4">4e année</option>
-                    <option value="5">5e année</option>
-                </select>
+            <div style="width: 100%">
+                <label for="secteur">Secteur</label>
+                <input type="text" id="secteur" name="secteur" th:field="*{secteur}" required="required">
             </div>
             <div style="width: 100%" th:classappend="${#fields.hasErrors('email') ? 'has-error' : ''}">
                 <label for="mail">Adresse e-mail</label>
