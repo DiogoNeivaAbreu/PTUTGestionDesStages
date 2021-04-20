@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Header</title>
     <meta charset="UTF-8" />
@@ -7,19 +7,22 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../../static/css/style.css"/>
 </head>
 <body>
-    <div th:fragment="header" class="container" >
-        <div class="navbar">
+<div th:fragment="header" class="container" >
+    <div class="navbar row">
+        <div class="gauche">
             <a href="/">Accueil</a>
             <a href="/offreStage/show">Les offres de stage</a>
-            <a href="/login">Se connecter</a>
-            <div sec:authorize="isAuthenticated()">
-                <form id="logoutForm" method="POST" th:action="@{/logout}" action="#">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                </form>
-                <span th:text="${#authentication.name}">Untel</span>  | <a onclick="document.forms['logoutForm'].submit()">Logout</a>
-            </div>
+            <a href="/login" sec:authorize="isAnonymous()">Se connecter</a>
         </div>
-        
+
+        <div class="droite" sec:authorize="isAuthenticated()">
+            <span th:text="${#authentication.name}">Untel</span>
+            <a onclick="document.forms['logoutForm'].submit()">Logout</a>
+            <form id="logoutForm" method="POST" th:action="@{/logout}" action="#">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+        </div>
     </div>
+</div>
 </body>
 </html>

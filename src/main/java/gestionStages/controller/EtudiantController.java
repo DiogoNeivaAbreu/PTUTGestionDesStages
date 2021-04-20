@@ -2,6 +2,7 @@ package gestionStages.controller;
 
 import gestionStages.dao.EtudiantRepository;
 import gestionStages.entity.Etudiant;
+import gestionStages.entity.Utilisateur;
 import gestionStages.service.SecurityService;
 import gestionStages.service.UserService;
 import gestionStages.validator.UserValidator;
@@ -39,6 +40,13 @@ public class EtudiantController {
         this.userService = userService;
         this.securityService = securityService;
         this.userValidator = userValidator;
+    }
+
+    @GetMapping(path = "/")
+    public String montrePageUtilisateur(
+            @AuthenticationPrincipal Etudiant etudiant,  // Les infos de l'utilisateur connecté
+            Model model) {
+        return "accueil/etudiant"; // On affiche la vue 'pageUser.html'
     }
 
     /**

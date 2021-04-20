@@ -2,10 +2,12 @@ package gestionStages.controller;
 
 import gestionStages.dao.EntrepriseRepository;
 import gestionStages.entity.Entreprise;
+import gestionStages.entity.Etudiant;
 import gestionStages.service.SecurityService;
 import gestionStages.service.UserService;
 import gestionStages.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,6 +34,13 @@ public class EntrepriseController {
         this.userService = userService;
         this.securityService = securityService;
         this.userValidator = userValidator;
+    }
+
+    @GetMapping(path = "/")
+    public String montrePageUtilisateur(
+            @AuthenticationPrincipal Entreprise entreprise,  // Les infos de l'utilisateur connecté
+            Model model) {
+        return "accueil/entreprise"; // On affiche la vue 'pageUser.html'
     }
 
     /**

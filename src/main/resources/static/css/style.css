@@ -12,6 +12,12 @@ body{
 	margin-right: auto;
 }
 
+.center{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
 div.containerForm{
 	width: 800px;
 	margin-left: auto;
@@ -87,6 +93,11 @@ h1{
 	text-align: center;
 }
 
+h2{
+	color: #000055;
+	font-family: "Nunito Sans", sans-serif;
+}
+
 label{
 	font-family: 'Nunito Sans', sans-serif;
 	font-weight: 700;
@@ -148,6 +159,56 @@ input[type="submit"]{
 div.dateDebut, div.dateFin{
 	width: 45%;
 }
+/*
+------------------------------------------------
+------------------------------------------------
+Index
+-----------------------------------------------
+-----------------------------------------------
+*/
+
+section#titreAccueil h1{
+	margin-top: 200px;
+	font-size: 40pt;
+	font-weight: 900;
+	text-align: center;
+}
+
+section#titreAccueil h2{
+	color: #000055;
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 2.5em;
+	font-weight: 600;
+	text-align: center;
+}
+
+div.boutonOffres{
+	margin-top: 50px;
+}
+
+section#boutonOffres h2{
+	width: 300px;
+	padding: 80px 30px;
+	margin: 0 20px;
+
+	background-color: #E6E7ED;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: 700;
+	font-size: 2em;
+	border-radius: 30px;
+
+	box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.75),
+	10px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+section#boutonOffres h2:hover{
+	box-shadow: inset -10px -10px 20px rgba(255, 255, 255, 0.75),
+	inset 10px 10px 20px rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+
+
 
 /*
 ------------------------------------------------
@@ -176,6 +237,13 @@ div.navbar a{
 
 div.navbar a:hover{
 	background-size: 100% 100%;
+}
+
+div.navbar span{
+	font-family: "Nunito Sans", sans-serif;
+	color: #000;
+	font-size: 1.5em;
+	font-weight: 600;
 }
 
 
@@ -555,3 +623,5 @@ section#dejaUtilisateur h2{
 section#dejaUtilisateur a {
 	color: #000055;
 }
+
+

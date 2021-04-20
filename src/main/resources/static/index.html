@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!--<!DOCTYPE HTML>
 <html>
     <head>
         <title>Mon application Spring Boot</title>
@@ -20,4 +20,33 @@
             <li><a href="etudiant/creerUnCompte">Créer un compte étudiant</a></li>
         </ul>
     </body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Bienvenue sur l'application Groupe10</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="css/style.css"/>
+</head>
+<body>
+<section id="titreAccueil">
+    <div class="container">
+        <div class="titreAccueil">
+            <h1>Bienvenue sur l'application "Groupe10"</h1>
+            <h2>Trouvez un stage en quelques clics</h2>
+        </div>
+    </div>
+</section>
+<section id="boutonOffres">
+    <div class="container">
+        <div class="boutonOffres center">
+            <h2 id="boutonAfficherOffres">Afficher les offres de stage</h2>
+        </div>
+    </div>
+</section>
+<script th:src="@{/scripts/script.js}" src="scripts/script.js"></script>
+</body>
 </html>

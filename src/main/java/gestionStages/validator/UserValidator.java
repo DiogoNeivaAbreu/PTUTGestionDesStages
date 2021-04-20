@@ -1,6 +1,5 @@
 package gestionStages.validator;
 
-import gestionStages.entity.Etudiant;
 import gestionStages.entity.Utilisateur;
 import gestionStages.service.UserService;
 import org.springframework.stereotype.Component;

@@ -12,7 +12,7 @@
 
 INSERT INTO Utilisateur(DTYPE, id, username, password, nom, adresse, telephone, email, secteur) VALUES
 ('Entreprise', 1, 'pfabre', 'pierre', 'Pierre Fabre', '24 Rue Firmin Oulès', '0660006600', 'mail@pierrefabre.com', 'laboratoire'),
-('Entreprise', 5, 'php', 'phphp', 'PHP', 'quelque part dans Paris', '0660006600', 'mail@php.com', 'hôpital');
+('Entreprise', 5, 'aphp', 'phphp', 'PHP', 'quelque part dans Paris', '0660006600', 'mail@aphp.com', 'hôpital');
 
 INSERT INTO Utilisateur(DTYPE, id, username, password, nom, adresse, telephone, email, prenom, annee_etude) VALUES
 ('Etudiant', 2, 'gpous', 'gogopous', 'POUS', '2 Rue de Metz', '0781887024', 'gauthier.pous@etud.univ-jfc.fr', 'Gauthier', '3e année'),
