@@ -109,7 +109,7 @@ public class EtudiantController {
     /*
     @PutMapping("/modifierProfil/{id}")
     public Etudiant updateUser(@PathVariable(value = "id") Integer id,
-                             @Valid Etudiant changementsEtudiant) throws ResourceNotFoundException {
+                             @Valid @RequestBody Etudiant changementsEtudiant) throws ResourceNotFoundException {
         Etudiant etudiantAModifier = dao.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Aucun étudiant n'a été trouvé avec l'id : " + id));
 
