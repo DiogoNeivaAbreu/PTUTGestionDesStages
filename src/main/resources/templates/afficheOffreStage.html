@@ -15,10 +15,10 @@
 		</div>
 	</div>
 </section>
-<section id="ajouterSupprimer">
+<section id="ajouterSupprimer" sec:authorize="hasRole('ROLE_ENTREPRISE')">
 	<div class="container">
 		<div class="ajouterSupprimer">
-			<div class="row">
+			<div class="row" >
 				<!--/* On appelle l'URL 'add' du contôleur */-->
 				<a th:href="@{add}" href='formulaireOffreStage.html'>Ajouter une offre</a>
 			</div>
@@ -48,7 +48,7 @@
 					<div class="descriptionOffre">
 						<p th:text="${o.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mollis nunc eget ligula feugiat, ornare lobortis nisi tempor. Sed odio enim, congue sed venenatis nec, egestas quis turpis. Sed et felis lacus. Aenean faucibus dolor eu sem vestibulum consequat.</p>
 					</div>
-                                        <div>
+                                        <div class="descriptionOffre">
                                             <p th:text="${o.etatOffre}">Etat de l'offre</p>
                                         </div>
 				</div>

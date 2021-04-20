@@ -16,7 +16,7 @@
 <section id="titre">
     <div class="container">
         <div class="titre">
-            <h1>Ajouter une offre</h1>
+            <h1>Ajout d'une offre </br> par [[${#authentication.name}]]</h1>
         </div>
     </div>
 </section>
@@ -27,7 +27,6 @@
         <div class="ajouterUneOffre">
             <form th:object="${offreStage}" method="POST" th:action="@{save}">
                 <div class="row">
-                    <label for="entreprise">Entreprise:</label><label>[[${#authentication.name}]]</label>
                     <label for="libelle">Libellé de l'offre</label>
                     <input id="libelle" type="text" autocomplete="off" placeholder="Libellé" th:field="*{titre}" required/>
                     <!--/* th:field définit quel champ de l'objet est édité par cette zone de saisie */-->
@@ -43,11 +42,16 @@
                             <input id="dateFin" type="text" placeholder="jj/mm/aaaa" th:field="*{dateFin}" required>
                         </div>
                     </div>
-                    <label for="etat">Etat:</label>
-                    <select id="etat" name="etat">
-                        <option disabled selected value>LIBRE</option>
-                        <option th:each="e: ${etatOffre}" th:value="${e.value}" >[[${e.VALIDEE}]]</option>
-                    </select>
+                    <div><!-- sec:authorize="hasRole('ROLE_ADMIN')" -->
+                        <!--<label for="etatOffre">Etat de l'offre:</label>
+                        <label for="etatOffre" th:field="*{etatOffre}">LIBRE</label>
+                        <select name="etatOffre" id="etatOffre" th:field="*{etatOffre}">
+                            <option value="0">En attente de validation</option>
+                            <option value="1">Validée</option>
+                            <option value="2">Refusée</option>
+                            <option value="3">Libre</option>
+                        </select>-->
+                    </div>
                     <input type="submit" value="Enregistrer" />
                 </div>
             </form>

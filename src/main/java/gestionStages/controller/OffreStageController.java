@@ -10,6 +10,7 @@ import gestionStages.entity.Etudiant;
 import gestionStages.entity.OffreStage;
 import gestionStages.entity.Stage;
 import gestionStages.entity.Utilisateur;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -79,12 +80,13 @@ public class OffreStageController {
      */
     @PostMapping(path = "save")
     public String ajouteOffrePuisMontreLaListe(OffreStage offreStage, Stage stage, @AuthenticationPrincipal Entreprise user,
-                                                        RedirectAttributes redirectInfo, Model model) {
+                                                        EtatOffreStage etatOffre, RedirectAttributes redirectInfo, Model model) {
         String message;
         try {
             // cf. https://www.baeldung.com/spring-data-crud-repository-save
             model.addAttribute("entreprises", dao2.findAll());
             offreStage.setProposeur(user);
+            offreStage.setEtatOffre(etatOffre);
             dao.save(offreStage);
             
 //            if(offreStage.getEtatOffre()== etatOffre.VALIDEE){
@@ -116,7 +118,7 @@ public class OffreStageController {
      * @return le nom de la vue à afficher ('modifierOffre.html')
      */
     @GetMapping(path = "modif")
-    public String montreLeFormulairePourModifier(@RequestParam("id") OffreStage offreStage, Integer id, Model model) {
+    public String montreLeFormulairePourModifier(@RequestParam("id") Integer id, OffreStage offreStage,  Model model) {
         
         model.addAttribute("offreStage", dao.findById(id));
         return "modifierOffre";
@@ -129,9 +131,9 @@ public class OffreStageController {
      * @param redirectInfo pour transmettre des paramètres lors de la redirection
      * @return une redirection vers l'affichage de la liste des offres
      */
-    @PatchMapping(path = "modifier")
-    public String modifieOffrePuisMontreLaListe(@RequestParam("id") OffreStage offreStage, Stage stage, Integer id, 
-                                EtatOffreStage etatOffre, RedirectAttributes redirectInfo, Model model) {
+    @PutMapping(path = "modifier/{id}")
+    public String modifieOffrePuisMontreLaListe(@PathVariable(value = "id") Integer id, @RequestBody OffreStage offreStage,
+                                                            RedirectAttributes redirectInfo, Model model) {
         String message;
         try {
             // cf. https://www.baeldung.com/spring-data-crud-repository-save

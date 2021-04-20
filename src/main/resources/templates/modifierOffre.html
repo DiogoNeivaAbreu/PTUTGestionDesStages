@@ -25,13 +25,10 @@
 <section id="ajouterUneOffre">
     <div class="containerForm">
         <div class="ajouterUneOffre">
-            <form th:object="${offreStage}" method="POST" th:action="@{modifier(id=${id})}">
+            <form th:object="${offreStage}" method="PUT" th:action="@{modifier(id=${id})}">
                 <div class="row">
                     <label for="entreprise">Entreprise:</label>
-                    <!--/*<select id="entreprise" name="entreprise">
-                        <option disabled selected value>[[${proposeur.nom}]]</option>
-                    </select>*/-->
-
+                    <input id="entreprise" type="text" autocomplete="off" placeholder="Entreprise" th:field="*{proposeur.nom}" required/>
                     <label for="libelle">Libellé de l'offre</label>
                     <input id="libelle" type="text" autocomplete="off" placeholder="Libellé" th:field="*{titre}" required/>
                     <!--/* th:field définit quel champ de l'objet est édité par cette zone de saisie */-->
@@ -47,14 +44,15 @@
                             <input id="dateFin" type="text" placeholder="jj/mm/aaaa" th:field="*{dateFin}" required>
                         </div>
                     </div>
-                    <div th:each="e: ${etatOffre}"><!-- sec:authorize="hasRole('ROLE_ADMIN')" -->
-                        <label for="etatOffre">Etat de l'offre:</label>
-                        <select name="etatOffre" id="etatOffre">
-                            <option value="1" th:text="${e.0}">En attente de validation</option>
-                            <option value="2" th:text="${e.1}">Refusée</option>
-                            <option value="3" th:text="${e.2}">Libre</option>
-                            <option value="4" th:text="${e.3}">Validée</option>
-                        </select>
+                    <div><!-- sec:authorize="hasRole('ROLE_ADMIN')" -->
+                        <!--<label for="etatOffre">Etat de l'offre:</label>
+                        <input id="etatOffre" type="text" placeholder="EtatOffre" th:field="*{etatOffre}" required>
+                        <select name="etatOffre" id="etatOffre" th:field="*{etatOffre}">
+                            <option value="0">En attente de validation</option>
+                            <option value="1">Validée</option>
+                            <option value="2">Refusée</option>
+                            <option value="3">Libre</option>
+                        </select>-->
                     </div>
                     <input type="submit" value="Enregistrer" />
                 </div>
