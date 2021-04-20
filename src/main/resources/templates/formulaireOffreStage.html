@@ -27,12 +27,7 @@
         <div class="ajouterUneOffre">
             <form th:object="${offreStage}" method="POST" th:action="@{save}">
                 <div class="row">
-                    <label for="entreprise">Entreprise:</label>
-                    <select id="entreprise" name="entreprise">
-                        <option disabled selected value>Nouvelle entreprise</option>
-                        <option th:each="e: ${entreprises}" th:value="${e.id}" >[[${e.nom}]]</option>
-                    </select>
-
+                    <label for="entreprise">Entreprise:</label><label>[[${#authentication.name}]]</label>
                     <label for="libelle">Libellé de l'offre</label>
                     <input id="libelle" type="text" autocomplete="off" placeholder="Libellé" th:field="*{titre}" required/>
                     <!--/* th:field définit quel champ de l'objet est édité par cette zone de saisie */-->
@@ -51,7 +46,7 @@
                     <label for="etat">Etat:</label>
                     <select id="etat" name="etat">
                         <option disabled selected value>LIBRE</option>
-                        <option th:each="e: ${etatOffre}" th:value="${e.values()}" >[[${e.values()}]]</option>
+                        <option th:each="e: ${etatOffre}" th:value="${e.value}" >[[${e.VALIDEE}]]</option>
                     </select>
                     <input type="submit" value="Enregistrer" />
                 </div>

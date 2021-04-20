@@ -18,24 +18,24 @@ public class UserValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return Etudiant.class.equals(aClass);
+        return Utilisateur.class.equals(aClass);
     }
 
     @Override
     public void validate(Object o, Errors errors) {
-        Etudiant etudiant = (Etudiant) o;
+        Utilisateur user = (Utilisateur) o;
 
 
-        if (userService.findByUsername(etudiant.getUsername()) != null) {
+        if (userService.findByUsername(user.getUsername()) != null) {
             errors.rejectValue("username", "Duplicate.userForm.username");
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
-        if (etudiant.getPassword().length() < 8 || etudiant.getPassword().length() > 32) {
+        if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
             errors.rejectValue("password", "Size.userForm.password");
         }
 
-        if (!etudiant.getPasswordConfirm().equals(etudiant.getPassword())) {
+        if (!user.getPasswordConfirm().equals(user.getPassword())) {
             errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
         }
     }

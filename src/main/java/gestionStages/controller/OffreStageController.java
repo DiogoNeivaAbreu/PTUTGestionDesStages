@@ -4,10 +4,12 @@ import gestionStages.dao.EntrepriseRepository;
 import gestionStages.dao.EtudiantRepository;
 import gestionStages.dao.OffreStageRepository;
 import gestionStages.dao.StageRepository;
+import gestionStages.entity.Entreprise;
 import gestionStages.entity.EtatOffreStage;
 import gestionStages.entity.Etudiant;
 import gestionStages.entity.OffreStage;
 import gestionStages.entity.Stage;
+import gestionStages.entity.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -75,11 +78,15 @@ public class OffreStageController {
      * @return une redirection vers l'affichage de la liste des offres
      */
     @PostMapping(path = "save")
-    public String ajouteOffrePuisMontreLaListe(OffreStage offreStage, Stage stage, EtatOffreStage etatOffre, RedirectAttributes redirectInfo) {
+    public String ajouteOffrePuisMontreLaListe(OffreStage offreStage, Stage stage, @AuthenticationPrincipal Entreprise user,
+                                                        RedirectAttributes redirectInfo, Model model) {
         String message;
         try {
             // cf. https://www.baeldung.com/spring-data-crud-repository-save
+            model.addAttribute("entreprises", dao2.findAll());
+            offreStage.setProposeur(user);
             dao.save(offreStage);
+            
 //            if(offreStage.getEtatOffre()== etatOffre.VALIDEE){
 //                stage.setTitre(offreStage.getTitre());
 //                stage.setDescription(offreStage.getDescription());
@@ -123,21 +130,21 @@ public class OffreStageController {
      * @return une redirection vers l'affichage de la liste des offres
      */
     @PatchMapping(path = "modifier")
-    public String modifieOffrePuisMontreLaListe(OffreStage offreStage, Stage stage, 
+    public String modifieOffrePuisMontreLaListe(@RequestParam("id") OffreStage offreStage, Stage stage, Integer id, 
                                 EtatOffreStage etatOffre, RedirectAttributes redirectInfo, Model model) {
         String message;
         try {
             // cf. https://www.baeldung.com/spring-data-crud-repository-save
-            
+            model.addAttribute("offreStage", dao.findById(id));
             dao.save(offreStage);
-            if(offreStage.getEtatOffre()== etatOffre.VALIDEE){
-                stage.setTitre(offreStage.getTitre());
-                stage.setDescription(offreStage.getDescription());
-                stage.setDateDebut(offreStage.getDateDebut());
-                stage.setDateFin(offreStage.getDateFin());
-                stage.setEntrepriseAccueil(offreStage.getProposeur());
-                dao4.save(stage);
-            }
+//            if(offreStage.getEtatOffre()== etatOffre.VALIDEE){
+//                stage.setTitre(offreStage.getTitre());
+//                stage.setDescription(offreStage.getDescription());
+//                stage.setDateDebut(offreStage.getDateDebut());
+//                stage.setDateFin(offreStage.getDateFin());
+//                stage.setEntrepriseAccueil(offreStage.getProposeur());
+//                dao4.save(stage);
+//            }
             // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
             message = "L'offre '" + offreStage.getTitre() + "' a été correctement enregistrée";
         } catch (DataIntegrityViolationException e) {

@@ -30,7 +30,7 @@
             </div>
             <div style="width: 100%">
                 <label for="secteur">Secteur</label>
-                <input type="text" id="secteur" name="secteur" th:field="*{secteur}" required="required">
+                <input type="text" id="secteur" name="secteur" th:field="*{secteur}" required="required"/>
             </div>
             <div style="width: 100%" th:classappend="${#fields.hasErrors('email') ? 'has-error' : ''}">
                 <label for="mail">Adresse e-mail</label>

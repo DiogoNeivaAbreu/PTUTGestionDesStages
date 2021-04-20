@@ -30,7 +30,7 @@
                     <label for="entreprise">Entreprise:</label>
                     <!--/*<select id="entreprise" name="entreprise">
                         <option disabled selected value>[[${proposeur.nom}]]</option>
-                    </select>
+                    </select>*/-->
 
                     <label for="libelle">Libellé de l'offre</label>
                     <input id="libelle" type="text" autocomplete="off" placeholder="Libellé" th:field="*{titre}" required/>
@@ -47,11 +47,15 @@
                             <input id="dateFin" type="text" placeholder="jj/mm/aaaa" th:field="*{dateFin}" required>
                         </div>
                     </div>
-                    <label for="etat">Etat:</label>
-                    <select id="etat" name="etat">
-                        <option disabled selected value th:text='etatOffre'>LIBRE</option>
-                        <!--/*<option th:each="e: ${etatOffre}" th:value="${e.values()}" >[[${e.values()}]]</option>*/-->
-                    </select>
+                    <div th:each="e: ${etatOffre}"><!-- sec:authorize="hasRole('ROLE_ADMIN')" -->
+                        <label for="etatOffre">Etat de l'offre:</label>
+                        <select name="etatOffre" id="etatOffre">
+                            <option value="1" th:text="${e.0}">En attente de validation</option>
+                            <option value="2" th:text="${e.1}">Refusée</option>
+                            <option value="3" th:text="${e.2}">Libre</option>
+                            <option value="4" th:text="${e.3}">Validée</option>
+                        </select>
+                    </div>
                     <input type="submit" value="Enregistrer" />
                 </div>
             </form>
