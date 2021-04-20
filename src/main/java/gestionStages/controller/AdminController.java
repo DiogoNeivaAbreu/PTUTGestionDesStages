@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(path = "/admin")
 @Secured("ROLE_ADMIN") // Réservé aux utilisateurs qui ont le rôle 'ROLE_ADMIN'
 public class AdminController {
+    /**
+     * Permet à un administrateur d'accéder à sa page utilisateur
+     */
     @GetMapping(path = "/")
-    public String montreLaPageAdmin(@AuthenticationPrincipal Utilisateur user,  // Les infos de l'utilisateur connecté
-                                    Model model) {
-        return "accueil/admin"; // On affiche la vue 'pageAdmin.html'
+    public String montreLaPageAdmin(@AuthenticationPrincipal Utilisateur user, Model model) { // Les infos de l'utilisateur connecté
+        return "accueil/admin"; // On affiche la vue 'admin.html'
     }
 }

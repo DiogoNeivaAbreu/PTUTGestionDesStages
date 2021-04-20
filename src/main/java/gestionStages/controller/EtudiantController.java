@@ -8,6 +8,7 @@ import gestionStages.service.UserService;
 import gestionStages.validator.UserValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,7 @@ import javax.validation.Valid;
 /**
  * Edition des catégories, sans gestion des erreurs
  */
+@Slf4j
 @Controller
 @RequestMapping(path = "/etudiant")
 public class EtudiantController {
@@ -42,31 +44,34 @@ public class EtudiantController {
         this.userValidator = userValidator;
     }
 
+    /**
+     * Permet à un étudiant d'accéder à sa page utilisateur
+     */
+    @Secured({"ROLE_ETUDIANT"}) // Réservé aux utilisateurs qui ont le rôle 'ROLE_ETUDIANT'
     @GetMapping(path = "/")
     public String montrePageUtilisateur(
-            @AuthenticationPrincipal Etudiant etudiant,  // Les infos de l'utilisateur connecté
-            Model model) {
-        return "accueil/etudiant"; // On affiche la vue 'pageUser.html'
+            @AuthenticationPrincipal Etudiant etudiant, Model model) { // Les infos de l'utilisateur connecté
+        return "accueil/etudiant"; // On affiche la vue 'etudiant.html'
     }
 
     /**
-     * Affiche toutes les informations d'un étudiant inscrit dans le site
-     *
-     * @param model pour transmettre les informations à la vue
-     * @return le nom de la vue à afficher ('tousLesEtudiants.html')
+     * Permet à un administrateur de voir tous les étudiants de l'application
      */
+    @Secured({"ROLE_ADMIN"})
     @GetMapping(path = "show")
     public String afficheTousLesEtudiants(Model model) {
-        model.addAttribute("etudiants", dao.findAll());
+        model.addAttribute("etudiants", dao.findAll(Sort.by(Sort.Direction.ASC, "nom")));
         return "tousLesEtudiants";
     }
 
+    /**
+     * Création de compte étudiant avec gestion des erreurs et enregistrement
+     */
     @GetMapping("/creerUnCompte")
     public String registration(Model model) {
         model.addAttribute("userForm", new Etudiant());
         return "creerUnCompte";
     }
-
     @PostMapping("/creerUnCompte")
     public String registration(@Valid @ModelAttribute("userForm") Etudiant userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);
@@ -79,9 +84,13 @@ public class EtudiantController {
 
         securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
 
-        return "redirect:/";
+        return "redirect:/etudiant/";
     }
 
+    /**
+     * Permet à un étudiant de modifier son profil
+     */
+    @Secured({"ROLE_ETUDIANT"})
     @GetMapping(path = "modifierProfil")
     public String modifierProfilUtilisateur(@AuthenticationPrincipal Etudiant etudiant, Model model){
         return "modifierProfil";

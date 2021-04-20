@@ -20,7 +20,7 @@ import gestionStages.storageservice.StorageFileNotFoundException;
 import gestionStages.storageservice.StorageService;
 
 @Slf4j
-@Secured({"ROLE_ADMIN", "ROLE_ETUDIANT"}) // Réservé aux utilisateurs qui ont le rôle 'ROLE_ADMIN'
+@Secured({"ROLE_ADMIN", "ROLE_ETUDIANT"}) // Réservé aux utilisateurs qui ont le rôle 'ROLE_ADMIN' ou 'ROLE_ETUDIANT'
 @Controller
 public class FileUploadController {
 
