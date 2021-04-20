@@ -11,7 +11,7 @@
 <section id="titreAccueil">
     <div class="container">
         <div class="titreAccueil">
-            <h1>Bienvenue dans ton espace étudiant</h1>
+            <h1>Bienvenue dans ton espace étudiant<span th:text="${#authentication.name}"></span></h1>
             <h2>Voici les pages sur lesquelles tu peux te rendre</h2>
         </div>
     </div>
