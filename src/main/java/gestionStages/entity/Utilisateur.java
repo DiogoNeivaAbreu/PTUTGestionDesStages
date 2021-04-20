@@ -31,7 +31,7 @@ public class Utilisateur implements UserDetails {
     @NonNull // Lombok
     private String password;
 
-    //@NonNull
+    @NonNull
     private String nom;
 
     private String adresse;

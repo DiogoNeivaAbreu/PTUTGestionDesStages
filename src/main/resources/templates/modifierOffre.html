@@ -16,7 +16,7 @@
 <section id="titre">
     <div class="container">
         <div class="titre">
-            <h1>Ajouter une offre</h1>
+            <h1>Modifier l'offre</h1>
         </div>
     </div>
 </section>
@@ -25,12 +25,11 @@
 <section id="ajouterUneOffre">
     <div class="containerForm">
         <div class="ajouterUneOffre">
-            <form th:object="${offreStage}" method="PATCH" th:action="@{modif/{id}}">
+            <form th:object="${offreStage}" method="POST" th:action="@{modifier(id=${id})}">
                 <div class="row">
                     <label for="entreprise">Entreprise:</label>
-                    <select id="entreprise" name="entreprise">
-                        <option disabled selected value>Nouvelle entreprise</option>
-                        <option th:each="e: ${entreprises}" th:value="${e.id}" >[[${e.nom}]]</option>
+                    <!--/*<select id="entreprise" name="entreprise">
+                        <option disabled selected value>[[${proposeur.nom}]]</option>
                     </select>
 
                     <label for="libelle">Libellé de l'offre</label>
@@ -50,8 +49,8 @@
                     </div>
                     <label for="etat">Etat:</label>
                     <select id="etat" name="etat">
-                        <option disabled selected value>LIBRE</option>
-                        <option th:each="e: ${etatOffre}" th:value="${e.values()}" >[[${e.values()}]]</option>
+                        <option disabled selected value th:text='etatOffre'>LIBRE</option>
+                        <!--/*<option th:each="e: ${etatOffre}" th:value="${e.values()}" >[[${e.values()}]]</option>*/-->
                     </select>
                     <input type="submit" value="Enregistrer" />
                 </div>

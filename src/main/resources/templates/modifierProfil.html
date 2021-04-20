@@ -16,24 +16,24 @@
     </div>
 </section>
 
-<label for="nom">Nom</label>
-<input id="nom" type="text" name="nom" th:value="${#authentication}"/>
-
+<label for="prenom">Prénom</label>
+<input id="prenom" type="text" name="prenom" th:value="${#authentication.getPrincipal()}"/>
 <!--
 <section id="modifierProfil">
     <div class="container">
         <div class="modifierProfil">
             <form method="POST">
-                <div style="width: 30%" th:classappend="${#fields.hasErrors('username') ? 'has-error' : ''}">
-
+                <div style="width: 30%">
+                    <label for="nom">Nom</label>
+                    <input id="nom" type="text" name="nom" th:value="${#authentication.getPrincipal().getNom()}"/>
                 </div>
                 <div style="width: 30%">
                     <label for="prenom">Prénom</label>
-                    <input id="prenom" type="text" name="prenom" value="principal.prenom"/>
+                    <input id="prenom" type="text" name="prenom" th:value="${#authentication.getPrincipal().getPrenom()}"/>
                 </div>
                 <div style="width: 30%">
-                    <label for="dateNaissance">Date de naissance</label>
-                    <input id="dateNaissance" type="text" name="dateNaissance" placeholder="jj/mm/aaaa" value="principal.dateNaissance"/>
+                    <label for="adresse">Adresse</label>
+                    <input id="adresse" type="text" name="adresse" placeholder="jj/mm/aaaa" th:value="${#authentication.getPrincipal().getAdresse()}"/>
                 </div>
                 <div style="width: 30%">
                     <label for="anneeEtude">Année d'étude</label>
@@ -45,14 +45,14 @@
                         <option value="5">5e année</option>
                     </select>
                 </div>
-                <div style="width: 30%" th:classappend="${#fields.hasErrors('email') ? 'has-error' : ''}">
+                <div style="width: 30%">
                     <label for="mail">Adresse e-mail</label>
-                    <input id="mail" type="email" name="mail" value="principal.email"/>
+                    <input id="mail" type="email" name="mail" th:value="${#authentication.getPrincipal().getEmail()}"/>
                     <ul><li th:errors="*{email}">Erreur sur le mail</li></ul>
                 </div>
-                <div style="width: 30%" th:classappend="${#fields.hasErrors('password') ? 'has-error' : ''}">
+                <div style="width: 30%">
                     <label for="motDePasse">Mot de passe</label>
-                    <input id="motDePasse" type="password" name="motDePasse" value="principal.password" />
+                    <input id="motDePasse" type="password" name="motDePasse" th:value="${#authentication.getPrincipal().getPassword()}" />
                     <ul><li th:errors="*{password}">Erreur sur le password</li></ul>
                 </div>
                 <input type="submit" value="Enregistrer les changements"/>

@@ -79,6 +79,56 @@ public class OffreStageController {
         try {
             // cf. https://www.baeldung.com/spring-data-crud-repository-save
             dao.save(offreStage);
+//            if(offreStage.getEtatOffre()== etatOffre.VALIDEE){
+//                stage.setTitre(offreStage.getTitre());
+//                stage.setDescription(offreStage.getDescription());
+//                stage.setDateDebut(offreStage.getDateDebut());
+//                stage.setDateFin(offreStage.getDateFin());
+//                stage.setEntrepriseAccueil(offreStage.getProposeur());
+//                dao4.save(stage);
+//            }
+            // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
+            message = "L'offre '" + offreStage.getTitre() + "' a été correctement enregistrée";
+        } catch (DataIntegrityViolationException e) {
+            // Les noms sont définis comme 'UNIQUE'
+            // En cas de doublon, JPA lève une exception de violation de contrainte d'intégrité
+            message = "Erreur : L'offre '" + offreStage.getTitre() + "' existe déjà";
+        }
+        // RedirectAttributes permet de transmettre des informations lors d'une redirection,
+        // Ici on transmet un message de succès ou d'erreur
+        // Ce message est accessible et affiché dans la vue 'afficheGalerie.html'
+        redirectInfo.addFlashAttribute("message", message);
+        return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste
+    }
+    
+    /**
+     * Montre le formulaire permettant de modifier une offre de stage
+     *
+     * @param offreStage initialisé par Spring, valeurs par défaut à afficher dans le formulaire
+     * @return le nom de la vue à afficher ('modifierOffre.html')
+     */
+    @GetMapping(path = "modif")
+    public String montreLeFormulairePourModifier(@RequestParam("id") OffreStage offreStage, Integer id, Model model) {
+        
+        model.addAttribute("offreStage", dao.findById(id));
+        return "modifierOffre";
+    }
+
+    /**
+     * Appelé par 'afficheOffreStage.html', méthode POST
+     *
+     * @param offreStage Une offre de stage initialisée avec les valeurs saisies dans le formulaire
+     * @param redirectInfo pour transmettre des paramètres lors de la redirection
+     * @return une redirection vers l'affichage de la liste des offres
+     */
+    @PostMapping(path = "modifier")
+    public String modifieOffrePuisMontreLaListe(@RequestParam("id") OffreStage offreStage, Stage stage, 
+                                EtatOffreStage etatOffre, RedirectAttributes redirectInfo, Model model) {
+        String message;
+        try {
+            // cf. https://www.baeldung.com/spring-data-crud-repository-save
+            
+            dao.save(offreStage);
             if(offreStage.getEtatOffre()== etatOffre.VALIDEE){
                 stage.setTitre(offreStage.getTitre());
                 stage.setDescription(offreStage.getDescription());
@@ -101,28 +151,28 @@ public class OffreStageController {
         return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste
     }
     
-    @GetMapping(path="modif/{id}")
-    OffreStage one(@PathVariable Integer id) throws NotFoundException {
-    
-        return dao.findById(id)
-            .orElseThrow(() -> new NotFoundException());
-  }
-    
-    @PutMapping(path="modif/{id}")
-    OffreStage modifOffre(@RequestBody OffreStage newOffre, @PathVariable Integer id) {
-
-      return dao.findById(id)
-        .map(offre -> {
-          offre.setTitre(newOffre.getTitre());
-          offre.setDescription(newOffre.getDescription());
-          offre.setEtatOffre(newOffre.getEtatOffre());
-          return dao.save(offre);
-        })
-        .orElseGet(() -> {
-          newOffre.setId(id);
-          return dao.save(newOffre);
-        });
-    }
+//    @GetMapping(path="modif")
+//    OffreStage one(@PathVariable Integer id) throws NotFoundException {
+//    
+//        return dao.findById(id)
+//            .orElseThrow(() -> new NotFoundException());
+//  }
+//    
+//    @PutMapping(path="modif")
+//    OffreStage modifOffre(@RequestBody OffreStage newOffre, @PathVariable Integer id) {
+//
+//      return dao.findById(id)
+//        .map(offre -> {
+//          offre.setTitre(newOffre.getTitre());
+//          offre.setDescription(newOffre.getDescription());
+//          offre.setEtatOffre(newOffre.getEtatOffre());
+//          return dao.save(offre);
+//        })
+//        .orElseGet(() -> {
+//          newOffre.setId(id);
+//          return dao.save(newOffre);
+//        });
+//    }
 
     /**
      * Appelé par le lien 'Supprimer' dans 'afficheOffreStage.html'
@@ -156,23 +206,23 @@ public class OffreStageController {
      * @param redirectInfo pour transmettre des paramètres lors de la redirection
      * @return une redirection vers l'affichage de la liste des offres
      */
-    @PostMapping(path = "postuler")
-    public String postuleOffrePuisMontreLaListe(@RequestParam("id") OffreStage offreStage, @RequestParam("id") Etudiant etudiant, RedirectAttributes redirectInfo) {
-        String message;
-        try {
-            // cf. https://www.baeldung.com/spring-data-crud-repository-save
-            dao.postulerOffre(etudiant, offreStage);
-            // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
-            message = "Vous avez postulé à " + offreStage.getTitre() ;
-        } catch (DataIntegrityViolationException e) {
-            // Les noms sont définis comme 'UNIQUE' 
-            // En cas de doublon, JPA lève une exception de violation de contrainte d'intégrité
-            message = "Erreur : Vous avez déjà postuler à cette offre";
-        }
-        // RedirectAttributes permet de transmettre des informations lors d'une redirection,
-        // Ici on transmet un message de succès ou d'erreur
-        // Ce message est accessible et affiché dans la vue 'afficheGalerie.html'
-        redirectInfo.addFlashAttribute("message", message);
-        return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
-    }
+//    @PostMapping(path = "postuler")
+//    public String postuleOffrePuisMontreLaListe(@RequestParam("id") OffreStage offreStage, @RequestParam("id") Etudiant etudiant, RedirectAttributes redirectInfo) {
+//        String message;
+//        try {
+//            // cf. https://www.baeldung.com/spring-data-crud-repository-save
+//            dao.postulerOffre(etudiant, offreStage);
+//            // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
+//            message = "Vous avez postulé à " + offreStage.getTitre() ;
+//        } catch (DataIntegrityViolationException e) {
+//            // Les noms sont définis comme 'UNIQUE' 
+//            // En cas de doublon, JPA lève une exception de violation de contrainte d'intégrité
+//            message = "Erreur : Vous avez déjà postuler à cette offre";
+//        }
+//        // RedirectAttributes permet de transmettre des informations lors d'une redirection,
+//        // Ici on transmet un message de succès ou d'erreur
+//        // Ce message est accessible et affiché dans la vue 'afficheGalerie.html'
+//        redirectInfo.addFlashAttribute("message", message);
+//        return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
+//    }
 }

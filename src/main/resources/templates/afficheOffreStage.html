@@ -36,7 +36,7 @@
 					<div class="row enteteOffre">
 						<img src="https://www.png-gratuit.com/img/cercle-noir-fond-transparent.png" alt="logo entreprise"></img>
 						<div class="titreOffre">
-                                                    <a th:href="@{modif/{id}}" href='modifierOffre.html'><h2 th:text="${o.titre}">Titre de l'offre qui peut être relativement long</h2></a>
+                                                    <a th:href="@{modif(id=${o.id})}" href='modifierOffre.html'><h2 th:text="${o.titre}">Titre de l'offre qui peut être relativement long</h2></a>
 							<i class="latin" th:if="${o.proposeur == NULL}">Anonyme</i>
 							<i class="latin" th:unless="${o.proposeur == NULL}" th:text="${o.proposeur.nom}">Nom de l'entreprise</i>
 							<span>||</span>
@@ -48,26 +48,27 @@
 					<div class="descriptionOffre">
 						<p th:text="${o.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mollis nunc eget ligula feugiat, ornare lobortis nisi tempor. Sed odio enim, congue sed venenatis nec, egestas quis turpis. Sed et felis lacus. Aenean faucibus dolor eu sem vestibulum consequat.</p>
 					</div>
+                                        <div>
+                                            <p th:text="${o.etatOffre}">Etat de l'offre</p>
+                                            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                                                <label for="etatOffre">Etat de l'offre</label>
+                                                <select name="etatOffre" id="etatOffre">
+                                                    <!--<option value="1" th:text="${o.etatOffre[0]}"></option>
+                                                    <option value="2" th:text="${o.etatOffre.1}"></option>
+                                                    <option value="3" th:text="${o.etatOffre.2}"></option>
+                                                    <option value="4" th:text="${o.etatOffre.3}"></option>-->
+                                                </select>
+                                            </div>
+                                        </div>
 				</div>
-                                <div>
-                                    <p th:text="${o.etatOffre}">Etat de l'offre</p>
-                                    <!--<div>
-                                        <label for="etatOffre">Etat de l'offre</label>
-                                        <select name="etatOffre" id="etatOffre">
-                                            <option value="1" th:text="${o.etatOffre.0}"></option>
-                                            <option value="2" th:text="${o.etatOffre.1}"></option>
-                                            <option value="3" th:text="${o.etatOffre.2}"></option>
-                                            <option value="4" th:text="${o.etatOffre.3}"></option>
-                                        </select>
-                                    </div>-->
-                                </div>
+                                
 				<div class="actionsSurOffre">
-					<div class="postuler" sec:authorize="hasRole('ROLE_USER')">
+					<div class="postuler" sec:authorize="hasRole('ROLE_ETUDIANT')">
 						<a th:href="@{postuler(id=${o.id})}">Postuler</a>
 					</div>
 					<div class="supprimerOffre" sec:authorize="hasRole('ROLE_ADMIN')">
 						<a th:href="@{delete(id=${o.id})}">
-							<img th:src="@{/images/trash.png}" src="trash.png" alt="supprimer">
+							<img th:src="@{/images/trash.png}" src="trash.png" alt="supprimer"/>
 						</a>
 					</div>
 				</div>

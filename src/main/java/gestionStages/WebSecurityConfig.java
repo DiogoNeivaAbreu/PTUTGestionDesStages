@@ -49,14 +49,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // La console h2 est réservée à l'administrateur
         http.authorizeRequests().antMatchers("/h2-console/**").hasRole("ADMIN").and().csrf()
                 .ignoringAntMatchers("/h2-console/**").and().headers().frameOptions().sameOrigin();
-//        http.antMatcher("/login")
-//                .authorizeRequests()
-//                .anyRequest().fullyAuthenticated()
-//                .and()
-//                .httpBasic()
-//                .authenticationEntryPoint(forbiddenEntryPoint)
-//                .and()
-//                .csrf().disable();
+        /*http.antMatcher("/login")
+                .authorizeRequests()
+                .anyRequest().fullyAuthenticated()
+                .and()
+                .httpBasic()
+                .authenticationEntryPoint(forbiddenEntryPoint)
+                .and()
+                .csrf().disable();*/
     }
 
     @Bean

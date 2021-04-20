@@ -8,14 +8,14 @@
 <body>
 <section id="formulaireCreerUnCompte">
     <div class="formulaireCreerUnCompte">
-        <form method="POST" th:object="${userForm}" th:action="@{/creerUnCompte}">
+        <form method="POST" th:object="${userForm}" th:action="@{/etudiant/creerUnCompte}">
             <div style="width: 45%" th:classappend="${#fields.hasErrors('username') ? 'has-error' : ''}">
                 <label for="nom">Nom</label>
-                <input id="nom" type="text" name="nom" />
+                <input id="nom" type="text" name="nom" th:field="*{nom}"/>
             </div>
             <div style="width: 45%">
                 <label for="prenom">Prénom</label>
-                <input id="prenom" type="text" name="prenom"/>
+                <input id="prenom" type="text" name="prenom" th:field="*{prenom}"/>
             </div>
             <div style="width: 45%">
                 <label for="username">Nom d'utilisateur</label>
@@ -23,12 +23,16 @@
                 <ul><li th:errors="*{username}">Erreur sur le prénom</li></ul>
             </div>
             <div style="width: 45%">
-                <label for="dateNaissance">Date de naissance</label>
-                <input id="dateNaissance" type="text" name="dateNaissance" placeholder="jj/mm/aaaa"/>
+                <label for="adresse">Adresse</label>
+                <input id="adresse" type="text" name="adresse" th:field="*{adresse}"/>
+            </div>
+            <div style="width: 45%">
+                <label for="telephone">Numéro de téléphone</label>
+                <input id="telephone" type="text" name="telephone" th:field="*{telephone}"/>
             </div>
             <div style="width: 45%">
                 <label for="anneeEtude">Année d'étude</label>
-                <select name="anneeEtude" id="anneeEtude">
+                <select name="anneeEtude" id="anneeEtude" th:field="*{anneeEtude}">
                     <option value="1">1ère année</option>
                     <option value="2">2e année</option>
                     <option value="3">3e année</option>
