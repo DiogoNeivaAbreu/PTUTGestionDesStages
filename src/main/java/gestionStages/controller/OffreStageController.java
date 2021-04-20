@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -121,8 +122,8 @@ public class OffreStageController {
      * @param redirectInfo pour transmettre des paramètres lors de la redirection
      * @return une redirection vers l'affichage de la liste des offres
      */
-    @PostMapping(path = "modifier")
-    public String modifieOffrePuisMontreLaListe(@RequestParam("id") OffreStage offreStage, Stage stage, 
+    @PatchMapping(path = "modifier")
+    public String modifieOffrePuisMontreLaListe(OffreStage offreStage, Stage stage, 
                                 EtatOffreStage etatOffre, RedirectAttributes redirectInfo, Model model) {
         String message;
         try {

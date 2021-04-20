@@ -13,7 +13,8 @@ public interface UserService {
     void saveEtudiant(Etudiant etudiant);
     Etudiant findByUsername(String username);
 
-    //void saveEntreprise(Entreprise entreprise);
+    void saveEntreprise(Entreprise entreprise);
+    Entreprise findCompanyByUsername(String username);
 
 
 }
