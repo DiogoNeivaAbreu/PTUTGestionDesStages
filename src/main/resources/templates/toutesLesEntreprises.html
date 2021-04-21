@@ -11,7 +11,7 @@
 <section id="titre">
     <div class="container">
         <div class="titre">
-            <h1>Tous les étudiants</h1>
+            <h1>Toutes les entreprises</h1>
         </div>
     </div>
 </section>
@@ -25,7 +25,7 @@
                     <a href="?anneeEtude">Année d'étude</a>
                 -->
                 <button type="button" id="nom">Nom</button>
-                <button type="button" id="prenom">Prénom</button>
+                <button type="button" id="prenom">Secteur</button>
                 <button type="button" id="anneeEtude">Année d'étude</button>
                 <!--
                     <form action="#" method="GET">
@@ -57,7 +57,7 @@
             <table>
                 <tr th:each="e: ${entreprises}">
                     <td th:text="${e.nom}">Nom</td>
-                    <td th:text="${e.secteur}">Prenom</td>
+                    <td th:text="${e.secteur}">Secteur</td>
                     <td th:text="${e.telephone}">06 60 66 00 06</td>
                 </tr>
             </table>
