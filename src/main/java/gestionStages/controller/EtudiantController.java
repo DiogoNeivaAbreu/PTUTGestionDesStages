@@ -131,8 +131,9 @@ public class EtudiantController {
      */
 
     /**
-     *Ne modifie pas l'éutiant connecté
+     *Ne modifie pas l'éutiant connecté mais en ajoute un nouveau
      */
+
     /*@PostMapping("/modifierProfil/{id}")
     public String updateUser(@PathVariable("id") Integer id, @Valid Etudiant etudiant,
                              BindingResult result, Model model) {
