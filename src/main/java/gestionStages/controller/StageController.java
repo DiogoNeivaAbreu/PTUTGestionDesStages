@@ -71,14 +71,14 @@ public class StageController {
         String message;
         try {
             // cf. https://www.baeldung.com/spring-data-crud-repository-save
-            if(offreStage.getEtatOffre()== etatOffre.VALIDEE){
+            //if(offreStage.getEtatOffre()== etatOffre.VALIDEE){
                 stage.setTitre(offreStage.getTitre());
                 stage.setDescription(offreStage.getDescription());
                 stage.setDateDebut(offreStage.getDateDebut());
                 stage.setDateFin(offreStage.getDateFin());
                 stage.setEntrepriseAccueil(offreStage.getProposeur());
                 dao.save(stage);
-            }
+            //}
             // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
             message = "Le stage '" + stage.getTitre() + "' a été correctement enregistrée";
         } catch (DataIntegrityViolationException e) {
