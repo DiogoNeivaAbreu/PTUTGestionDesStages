@@ -15,6 +15,18 @@
         </div>
     </div>
 </section>
+<section id="ajouterSupprimer" sec:authorize="hasRole('ROLE_ADMIN')">
+	<div class="container">
+		<div class="ajouterSupprimer">
+			<div class="row" >
+				<!--/* On appelle l'URL 'add' du contôleur */-->
+				<a th:href="@{add}" href='formulaireStage.html'>Ajouter un stage</a>
+			</div>
+			<!--/* On affiche un éventuel message d'erreur */-->
+			<h3 th:text="${message}">Message de succès ou d'erreur</h3>
+		</div>
+	</div>
+</section>
 <section id="filtres">
     <div class="container">
         <div class="filtres row">
@@ -46,7 +58,7 @@
             </div>
 
             <div class="rechercheEtudiant">
-                <input type="text" name="rechercheStage" placeholder="Recherche un stage">
+                <input type="text" name="rechercheStage" placeholder="Recherche un stage"/>
             </div>
         </div>
     </div>
@@ -55,7 +67,7 @@
     <div class="container">
         <div class="tousLesEtudiants">
             <table>
-                <tr th:each="s: ${stages}">
+                <tr th:each="s: ${stage}">
                     <td th:text="${s.titre}">Titre</td>
                     <td th:text="${s.stagiaire.nom}">Nom du stagiaire</td>
                     <td th:text="${s.entrepriseAccueil.nom}">Entreprise</td>
