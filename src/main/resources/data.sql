@@ -12,10 +12,10 @@
 
 INSERT INTO Utilisateur(DTYPE, id, username, password, nom, adresse, telephone, email, secteur) VALUES
 ('Entreprise', 1, 'pfabre', 'pierre', 'Pierre Fabre', '24 Rue Firmin Oulès', '0660006600', 'mail@pierrefabre.com', 'laboratoire'),
-('Entreprise', 5, 'aphp', 'phphp', 'PHP', 'quelque part dans Paris', '0660006600', 'mail@aphp.com', 'hôpital');
+('Entreprise', 5, 'aphp', 'phphp', 'AP-HP', 'quelque part dans Paris', '0660006600', 'mail@aphp.com', 'hôpital');
 
 INSERT INTO Utilisateur(DTYPE, id, username, password, nom, adresse, telephone, email, prenom, annee_etude) VALUES
-('Etudiant', 2, 'gpous', 'gogopous', 'POUS', '2 Rue de Metz', '0781887024', 'gauthier.pous@etud.univ-jfc.fr', 'Gauthier', '3e année'),
+('Etudiant', 2, 'gpous', '$2a$10$YMTjNP2qjzyhG/0JRRQFUeNaC2oKlb1hmRLSODJwNeqXdDyT3quoC', 'POUS', '2 Rue de Metz', '0781887024', 'gauthier.pous@etud.univ-jfc.fr', 'Gauthier', '3e année'),
 ('Etudiant', 3, 'dneiva', 'diodiogo', 'NEIVA ABREU', '2 Rue de la Rue', '0651721570', 'diogo.neivaabreu@etud.univ-jfc.fr', 'Diogo', '3e année'),
 ('Etudiant', 4, 'cgay', 'cocogay', 'GAY', '8 Place de la République', '0783734322', 'colin.gay@etud.univ-jfc.fr', 'Colin', '3e année');
 

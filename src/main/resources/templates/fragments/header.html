@@ -11,6 +11,9 @@
     <div class="navbar row">
         <div class="gauche">
             <a href="/">Accueil</a>
+            <a href="/admin/" sec:authorize="hasRole('ROLE_ADMIN')">Mon espace</a>
+            <a href="/etudiant/" sec:authorize="hasRole('ROLE_ETUDIANT')">Mon espace</a>
+            <a href="/entreprise/" sec:authorize="hasRole('ROLE_ENTREPRISE')">Mon espace</a>
             <a href="/offreStage/show">Les offres de stage</a>
             <a href="/login" sec:authorize="isAnonymous()">Se connecter</a>
         </div>

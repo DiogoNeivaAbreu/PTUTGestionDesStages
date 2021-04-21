@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" method="post" th:object="${etudiant}" th:action="@{/etudiant/modifierProfil/{id}(id=${etudiant.id})}">
+    <!--<input type="hidden" name="_method" value="put" />-->
+    <div style="width: 45%" th:classappend="${#fields.hasErrors('username') ? 'has-error' : ''}">
+        <label for="nom">Nom</label>
+        <input id="nom" type="text" name="nom" th:field="*{nom}" required="required"/>
+    </div>
+    <div style="width: 45%">
+        <label for="prenom">Prénom</label>
+        <input id="prenom" type="text" name="prenom" th:field="*{prenom}" required="required">
+    </div>
+    <div style="width: 45%">
+        <label for="username">Nom d'utilisateur</label>
+        <input id="username" type="text" name="username" th:field="*{username}" required="required"/>
+        <ul><li th:errors="*{username}">Erreur sur le prénom</li></ul>
+    </div>
+    <div style="width: 45%">
+        <label for="adresse">Adresse</label>
+        <input id="adresse" type="text" name="adresse" th:field="*{adresse}" required="required"/>
+    </div>
+    <div style="width: 45%">
+        <label for="telephone">Numéro de téléphone</label>
+        <input id="telephone" type="text" name="telephone" th:field="*{telephone}" required="required"/>
+    </div>
+    <div style="width: 45%">
+        <label for="anneeEtude">Année d'étude</label>
+        <select name="anneeEtude" id="anneeEtude" th:field="*{anneeEtude}" required="required">
+            <option value="1">1ère année</option>
+            <option value="2">2e année</option>
+            <option value="3">3e année</option>
+            <option value="4">4e année</option>
+            <option value="5">5e année</option>
+        </select>
+    </div>
+    <div style="width: 100%" th:classappend="${#fields.hasErrors('email') ? 'has-error' : ''}">
+        <label for="mail">Adresse e-mail</label>
+        <input id="mail" type="email" name="mail" th:field="*{email}" required="required"/>
+        <ul><li th:errors="*{email}">Erreur sur le mail</li></ul>
+    </div>
+    <div style="width: 100%" th:classappend="${#fields.hasErrors('password') ? 'has-error' : ''}">
+        <label for="motDePasse">Mot de passe</label>
+        <input id="motDePasse" type="password" name="motDePasse" th:field="*{password}" required="required"/>
+        <ul><li th:errors="*{password}">Erreur sur le password</li></ul>
+    </div>
+    <div style="width: 100%" th:classappend="${#fields.hasErrors('passwordConfirm') ? 'has-error' : ''}">
+        <label for="motDePasseVerif">Confirmer le votre mot de passe</label>
+        <input id="motDePasseVerif" type="password" name="motDePasse" th:field="*{passwordConfirm}" required="required"/>
+        <ul><li th:errors="*{passwordConfirm}">Erreur confirmation password</li></ul>
+    </div>
+
+
+    <!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
+
+    <input type="submit" value="Update User">
+</form>
+</body>
+</html>

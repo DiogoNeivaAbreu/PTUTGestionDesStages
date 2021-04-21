@@ -11,7 +11,7 @@
 <section id="titreAccueil">
     <div class="container">
         <div class="titreAccueil">
-            <h1>Bienvenue dans ton espace étudiant</h1>
+            <h1>Bienvenue dans ton espace étudiant <span th:text="${#authentication.getPrincipal().getPrenom()}"></span></h1>
             <h2>Voici les pages sur lesquelles tu peux te rendre</h2>
         </div>
     </div>
@@ -20,7 +20,14 @@
     <div class="container">
         <div class="boutonOffres center">
             <h2 id="boutonAfficherOffres">Afficher les offres de stage</h2>
-            <h2 id="boutonModifierProfilEtudiant">Modifier mon <br/>profil</h2>
+            <!--<h2 id="boutonModifierProfilEtudiant">Modifier<br/>mon profil</h2>-->
+            <h2>
+                <a href="modifierProfilTest.html" th:href="@{/etudiant/modifierProfil/{id}(id=${#authentication.getPrincipal().getId()})}">
+                    Modifier mon<br/>profil
+                </a>
+            </h2>
+
+            <h2 id="mettreEnLigneUnFichier">Mettre en ligne<br />un fichier</h2>
         </div>
     </div>
 </section>

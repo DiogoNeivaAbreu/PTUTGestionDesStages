@@ -11,7 +11,7 @@
 <section id="titreAccueil">
     <div class="container">
         <div class="titreAccueil">
-            <h1>Bienvenue dans ton espace Entreprise</h1>
+            <h1>Bienvenue dans ton espace Entreprise <span th:text="${#authentication.getPrincipal().getNom()}"></span></h1>
             <h2>Voici les pages sur lesquelles tu peux te rendre</h2>
         </div>
     </div>
